@@ -8769,11 +8769,24 @@ body {
   .mia-page-item.active .mia-page-link {
     color: #ffffff !important; }
 
+.know_more_button {
+  position: absolute;
+  bottom: 20px; }
+
 .z-2 {
   z-index: 3 !important; }
 
 .z-1 {
   z-index: 3 !important; }
+
+.z-4 {
+  z-index: 4 !important; }
+
+.z-5 {
+  z-index: 5 !important; }
+
+.z-0 {
+  z-index: 0 !important; }
 
 @media (max-width: 575px) {
   .img-clean-display {
@@ -8783,7 +8796,7 @@ body {
     .mia-header .title-container {
       width: 65% !important; }
     .mia-header .font_3 {
-      font-size: 50px; }
+      font-size: 35px; }
     .mia-header .row {
       padding-left: 0; }
   .wxs-100 {
@@ -8936,13 +8949,13 @@ footer {
 
 @font-face {
   font-family: ReklameScript-Regular;
-  src: url("/public/custom-fonts/ReklameScript-Regular.otf") format("opentype"); }
+  src: url("/public/custom-fonts/Cocogoose_Pro_Semilight-trial.ttf") format("opentype"); }
 
 .font_3 {
   font-family: ReklameScript-Regular;
   font-style: normal;
   font-variant: normal;
-  font-size: 68px;
+  font-size: 45px;
   line-height: 1em;
   letter-spacing: 3px; }
 

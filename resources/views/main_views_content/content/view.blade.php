@@ -41,7 +41,7 @@
                             <div class="col-12 multiple_article img-cover"
                                  style="background-image: url('{{ $article['imagen'] }}')"></div>
                             <div class="col-12 p-2 mt-2">
-                                <p class="date text-muted text-left">{{ $article['fecha'] }}</p>
+                                <p class="date text-muted text-left">{{ date('d M, Y', strtotime($article['fecha'])) }}</p>
                                 <p class="title font-weight-bold text-left">{{ $article['titulo'] }}</p>
                                 <p class="description text-muted text-left">{{ $article['texto_uno'] }}...</p>
                             </div>
@@ -55,6 +55,24 @@
 </div>
 <script type="text/javascript">
     var articles = {!! json_encode($content['content']) !!};
+    $(document).ready(function () {
+        console.log('all ready');
+        var current_background = '{!! $main_background !!}';
+        $('body').css('background-image', 'url(' + current_background + ')');
+
+
+        let meta_title = $('.content_title').text();
+        let meta_description = 'Radio mia 93.7 ' . meta_title;
+        let meta_image = $('.navbar-logo').attr('data-logo-link');
+
+        $('title').empty().text(meta_title);
+        $('meta[property=\'og:title\']').attr('content', meta_title);
+
+        $('meta[name=description]').attr('content', meta_description);
+        $('meta[property=\'og:description\']').attr('content', meta_description);
+
+        $('meta[property=\'og:image\']').attr('content', meta_image);
+    });
 </script>
 <script src="/public/js/nav_movements.js"></script>
 <script src="/public/js/main_views/content/pagination_manager.js"></script>

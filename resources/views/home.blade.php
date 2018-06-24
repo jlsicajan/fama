@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'mia 93.7')
+@section('description', 'Radio mia 93.7 escucha tu corazon')
+@section('og_image', env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo())
+
 @section('head')
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 @endsection
@@ -8,7 +12,7 @@
     <div class="main_content_container">
         @include('elements.mia-hdear', ['main_banner', $main_banner])
         <div class="container">
-            @include('elements.for_grid.space_block_header', ['classes' => ''])
+            @include('elements.for_grid.space_block_header', ['classes' => 'z-0'])
 
             <div class="row">
                 <div class="col-12 col-md-6 py-md-4 pd-2rem">

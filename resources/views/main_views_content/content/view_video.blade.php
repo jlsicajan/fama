@@ -20,11 +20,11 @@
                     <div class="video_article_container row border">
                         <div class="col-12 p-0">
                             <iframe class="embed-responsive-item" width="100%" height="100%"
-                                    src="{{ str_replace(array('https://youtu.be/', 'https://www.youtube.com/watch?v='), 'https://youtube.be/embed/', $video['codigo_api']) }}?rel=0&autoplay=0&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=0"
+                                    src="{{ str_replace(array('https://youtu.be/', 'https://www.youtube.com/watch?v='), 'https://youtube.be/embed/', $video['codigo_api']) }}?rel=0&autoplay=0&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=1&showinfo=0"
                                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                         <div class="col-12 p-2 mt-2">
-                            <p class="date text-muted text-left">{{ $video['fecha'] }}</p>
+                            <p class="date text-muted text-left">{{ date('d M, Y', strtotime($video['fecha'])) }}</p>
                             <p class="title font-weight-bold text-left">{{ $video['titulo'] }}</p>
                         </div>
                     </div>
@@ -34,4 +34,23 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log('all ready');
+        var current_background = '{!! $main_background !!}';
+        $('body').css('background-image', 'url(' + current_background + ')');
+
+        let meta_title = $('.content_title').text();
+        let meta_description = 'Radio mia 93.7 ' . meta_title;
+        let meta_image = $('.navbar-logo').attr('data-logo-link');
+
+        $('title').empty().text(meta_title);
+        $('meta[property=\'og:title\']').attr('content', meta_title);
+
+        $('meta[name=description]').attr('content', meta_description);
+        $('meta[property=\'og:description\']').attr('content', meta_description);
+
+        $('meta[property=\'og:image\']').attr('content', meta_image);
+    });
+</script>
 <script src="/public/js/nav_movements.js"></script>
