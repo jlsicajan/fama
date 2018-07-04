@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Fama</title>
     <meta name="description" content="">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#anchor00"><img src="public/images/logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="#anchor00"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
         </div>
 
 
@@ -62,41 +62,6 @@
     </nav>
 </header>
 
-<!-- INTRO -->
-<section class="intro full-width jIntro" id="anchor00">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="slider-intro">
-                    <div id="slides">
-                        <div class="overlay"></div>
-                        <div class="slides-container">
-                            <img src="public/images/demo/intro/intro-slide1.jpg">
-                            <img src="public/images/demo/intro/intro-slide2.jpg">
-                            <img src="public/images/demo/intro/intro-slide3.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="vcenter text-center text-overlay">
-            <div class="logo-intro"><img src="public/images/demo/logo-intro.png" alt=""></div>
-            <div id="owl-main-text" class="owl-carousel">
-                <div class="item">
-                    <h1 class="primary-title">Dope Beatmakers</h1>
-                </div>
-                <div class="item">
-                    <h1 class="primary-title">Music is Life</h1>
-                </div>
-            </div>
-            <h2 class="subtitle-text">Share & Promote your music online</h2>
-            <div class="voffset50"></div>
-            <a href="#" class="btn btn-invert">Learn more</a>
-        </div>
-
-    </div>
-</section>
 
 <!-- PLAYER -->
 <div class="player horizontal">

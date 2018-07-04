@@ -56,12 +56,15 @@ class HomeController extends Controller
         $current_show = $this->get_current_show();
         $news = News::where('activo', '=', 1)->get()->toArray();
         $main_banner = Section::get_banner();
+
+        $main_banner = NULL;
+
         $week_programation = $this->get_week_programation();
         $main_background = Section::get_background();
         $to_20_background = Section::get_the20_background();
         $to_20_url = Section::get_the20_url();
 
-        $view = $request->ajax() ? 'main_views_content.home' : 'home';
+        $view = $request->ajax() ? 'main_views_content.home' : 'home_template';
 
         return view($view)->with(array('to_20_url' => $to_20_url, 'to_20_background' => $to_20_background, 'next_shows' => $next_shows,
                 'current_show' => $current_show, 'news' => $news, 'main_banner' => $main_banner, 'main_background' => $main_background, 'home_categories' => $home_categories, 'week_programation' => $week_programation));
