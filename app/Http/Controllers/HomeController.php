@@ -38,36 +38,13 @@ class HomeController extends Controller
     
     public function index(\Illuminate\Http\Request $request)
     {
-        $tell_me_more_category = Category::where('nombre', 'like', '%NTAME MAS%')->first()->toArray();
-        $my_love = Category::where('nombre', 'like', '%MIAMOR%')->first()->toArray();
-        $healthy = Category::where('nombre', 'like', '%SALUDABLE-MENTE%')->first()->toArray();
-
-        $tell_me_more_category['articles'] = Article::where('categoria_id', '=', $tell_me_more_category['id'])->select('id','titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(6)->get()->toArray();
-        $my_love['articles'] = Article::where('categoria_id', '=', $my_love['id'])->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(4)->get()->toArray();
-        $healthy['articles'] = Article::where('categoria_id', '=', $healthy['id'])->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(4)->get()->toArray();
-
-        $home_categories = array(
-            1 => $tell_me_more_category,
-            2 => $my_love,
-            3 => $healthy
-        );
-
-        $next_shows = $this->get_next_shows();
-        $current_show = $this->get_current_show();
-        $news = News::where('activo', '=', 1)->get()->toArray();
         $main_banner = Section::get_banner();
 
         $main_banner = NULL;
 
-        $week_programation = $this->get_week_programation();
-        $main_background = Section::get_background();
-        $to_20_background = Section::get_the20_background();
-        $to_20_url = Section::get_the20_url();
-
         $view = $request->ajax() ? 'main_views_content.home' : 'home_template';
 
-        return view($view)->with(array('to_20_url' => $to_20_url, 'to_20_background' => $to_20_background, 'next_shows' => $next_shows,
-                'current_show' => $current_show, 'news' => $news, 'main_banner' => $main_banner, 'main_background' => $main_background, 'home_categories' => $home_categories, 'week_programation' => $week_programation));
+        return view($view)->with(array('main_banner' => $main_banner));
     }
 
 
