@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="main_content_container">
-        @include('elements.mia-hdear', ['main_banner', $main_banner])
+        @include('elements.mia-hdear', ['main_texts' => array('EL EQUIPO', 'CONOCENOS')])
         <div class="container">
             @include('elements.for_grid.space_block', ['classes' => 'hidden-sm-down'])
             @include('elements.for_grid.middle_space_block', ['classes' => ''])

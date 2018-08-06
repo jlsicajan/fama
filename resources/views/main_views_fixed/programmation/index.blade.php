@@ -7,7 +7,7 @@
     <div class="main_content_container">
         @include('elements.mia-hdear', ['title' => $current_show['PAFF_titulo'],
        'custom_background' => $current_show['PAFF_image'],
-       'custom_subtitle' => $current_show['PAFF_start'] . ' - ' . $current_show['PAFF_end']])
+       'custom_subtitle' => $current_show['PAFF_start'] . ' - ' . $current_show['PAFF_end'], 'main_texts' => array('PROGRAMACION', 'PROGRAMACION SEMANAL')])
         <div class="container">
             @include('elements.for_grid.space_block', ['classes' => 'hidden-sm-down'])
             @include('elements.for_grid.middle_space_block', ['classes' => ''])

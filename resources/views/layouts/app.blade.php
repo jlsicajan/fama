@@ -6,7 +6,8 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js"><!--<![endif]-->
+<html class="no-js">
+<!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,25 +20,36 @@
 
     <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
-          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-    <!-- Styles -->
     <link href="/public/css/app.css" rel="stylesheet">
-    <script src="/public/js/modernizr.js"></script>
+    <script src="../../../resources/assets/muziq/scripts/vendor/modernizr.js"></script>
+    <script src="../../../resources/assets/muziq/scripts/vendor/jquery.js"></script>
+    <script src="../../../resources/assets/muziq/scripts/vendor/bootstrap.js"></script>
     @yield('head')
 </head>
 <body data-spy="scroll" data-target="#navbar-muziq" data-offset="80">
-<div class="loading d-none">
-    <div class="lds-ripple">
-        <div></div>
-        <div></div>
+<!-- LOADER -->
+<div id="mask">
+    <div class="loader">
+        <!-- <img src="images/loading.gif" alt='loading'> -->
+        <div class="cssload-container">
+            <div class="cssload-shaft1"></div>
+            <div class="cssload-shaft2"></div>
+            <div class="cssload-shaft3"></div>
+            <div class="cssload-shaft4"></div>
+            <div class="cssload-shaft5"></div>
+            <div class="cssload-shaft6"></div>
+            <div class="cssload-shaft7"></div>
+            <div class="cssload-shaft8"></div>
+            <div class="cssload-shaft9"></div>
+            <div class="cssload-shaft10"></div>
+        </div>
     </div>
 </div>
 <!-- HEADER -->
 <header id="jHeader">
     <nav class="navbar navbar-default" role="navigation">
-
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Desplegar navegación</span>
@@ -47,28 +59,38 @@
             </button>
             <a class="navbar-brand" href="#anchor00"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
         </div>
-
-
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
             <ul class="nav navbar-nav navbar-right">
-                @foreach(App\Category::list_for_menu() as $category)
-                    <li>
-                        @if(empty($category['subcategories']))
-                            <a class="ajax_link {{ Request::is('contenido/' . $category['id'] . '/0' ) ? 'active' : '' }}"
-                               data-href="{{ route('content', [$category['id'], 0]) }}">
-                                {{ $category['nombre'] }}
-                            </a>
-                        @else
-                            <a class="nav-link dropdown-toggle" href="#" id="categories_multimenu"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ $category['nombre'] }}
-                            </a>
-                        @endif
-                    </li>
-                @endforeach
+                <li>
+                    <a class="ajax_link" data-href="/programacion">
+                        Programación
+                    </a>
+                </li>
+                <li>
+                    <a class="ajax_link" data-href="/staff">
+                        Staff
+                    </a>
+                </li>
+                <li>
+                    <a class="ajax_link" data-href="/cine">
+                        Cine
+                    </a>
+                </li>
+                <li>
+                    <a class="ajax_link" data-href="#">Podcast</a>
+                </li>
+                <li>
+                    <a class="ajax_link" data-href="fotos">
+                        Fotos
+                    </a>
+                </li>
+                <li>
+                    <a class="ajax_link" data-href="los20">
+                        Los 20+
+                    </a>
+                </li>
             </ul>
         </div>
-
     </nav>
 </header>
 
@@ -90,7 +112,22 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <!-- Scripts -->
+
+<script src="../../../resources/assets/muziq/scripts/vendor/jquery.superslides.min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/flickity.pkgd.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/audio.min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/twitterFetcher_min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/isotope.pkgd.min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/jquery.swipebox.min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/TimeCircles.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/owl.carousel.min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/vendor/jquery.parallax.min.js"></script>
+<script src="../../../resources/assets/muziq/scripts/discography.js"></script>
+<script src="../../../resources/assets/muziq/scripts/news.js"></script>
+<script src="../../../resources/assets/muziq/scripts/main.js"></script>
 <script src="/public/js/app.js"></script>
+<script src="/public/js/nav_movements.js"></script>
+<script src="/public/js/main_views/content/pagination_manager.js"></script>
 @yield('after_body')
 </body>
 </html>

@@ -34,19 +34,25 @@ class HomeController extends Controller
     // public function __construct()
     // {
     // 	$this->middleware('auth');
-    // }
-    
     public function index(\Illuminate\Http\Request $request)
     {
+        $next_shows = $this->get_next_shows();
+        $current_show = $this->get_current_show();
+        $news = News::where('activo', '=', 1)->get()->toArray();
         $main_banner = Section::get_banner();
 
-        $main_banner = NULL;
+        $week_programation = $this->get_week_programation();
+//        $main_background = Section::get_background();
+//        $to_20_background = Section::get_the20_background();
+//        $to_20_url = Section::get_the20_url();
 
         $view = $request->ajax() ? 'main_views_content.home' : 'home_template';
 
-        return view($view)->with(array('main_banner' => $main_banner));
-    }
+//        print_r(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show, 'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation));die();
 
+        return view($view)->with(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show,
+            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation));
+    }
 
     public function article_one($article_id, \Illuminate\Http\Request $request){
         $article = Article::findOrFail($article_id);

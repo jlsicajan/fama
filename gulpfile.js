@@ -16,23 +16,7 @@ elixir(function (mix) {
     mix.sass('main_views/the20.scss', 'public/css/main_views/the20.css');
     mix.sass('elements/week_shows.scss', 'public/css/elements/week_shows.css');
 
-    mix.scripts([
-        '../../../resources/assets/muziq/scripts/vendor/jquery.js',
-        '../../../resources/assets/muziq/scripts/vendor/jquery.superslides.min.js',
-        '../../../resources/assets/muziq/scripts/vendor/flickity.pkgd.js',
-        '../../../resources/assets/muziq/scripts/vendor/audio.min.js',
-        '../../../resources/assets/muziq/scripts/vendor/twitterFetcher_min.js',
-        '../../../resources/assets/muziq/scripts/vendor/isotope.pkgd.min.js',
-        '../../../resources/assets/muziq/scripts/vendor/jquery.swipebox.min.js',
-        '../../../resources/assets/muziq/scripts/vendor/TimeCircles.js',
-        '../../../resources/assets/muziq/scripts/vendor/owl.carousel.min.js',
-        '../../../resources/assets/muziq/scripts/vendor/jquery.parallax.min.js',
-        '../../../resources/assets/muziq/scripts/discography.js',
-        '../../../resources/assets/muziq/scripts/news.js',
-        '../../../resources/assets/muziq/scripts/main.js',
-        '../../../resources/assets/muziq/scripts/vendor/bootstrap.js',
-
-        '../../../node_modules/moment/min/moment.min.js',
+    mix.scripts(['../../../node_modules/moment/min/moment.min.js',
         '../../../resources/assets/js/main_views/content/moment_es.js',
         '../../../resources/assets/js/page_cleaner.js',
         '../../../resources/assets/js/nav.js',

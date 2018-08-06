@@ -84,7 +84,6 @@
     <script type="text/javascript">
         var articles = {!! json_encode($content['content']) !!};
     </script>
-    <script src="/public/js/main_views/content/pagination_manager.js"></script>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
