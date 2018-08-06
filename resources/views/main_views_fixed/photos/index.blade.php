@@ -2,12 +2,9 @@
 
 @section('content')
     <div class="main_content_container">
-        @include('elements.mia-hdear', ['main_banner', $main_banner])
-        <div class="container">
-            @include('elements.for_grid.space_block', ['classes' => 'hidden-sm-down'])
-            @include('elements.for_grid.middle_space_block', ['classes' => ''])
-            @include('elements.for_grid.middle_space_block', ['classes' => 'hidden-sm-down'])
+        @include('elements.mia-hdear', ['main_texts' => array('FOTOS', 'GALERIA')])
 
+        <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 py-md-4 pd-2rem">
                     @if(isset($photos[0]) && !empty($photos[0]))

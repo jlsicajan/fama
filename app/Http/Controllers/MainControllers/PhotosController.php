@@ -18,16 +18,11 @@ class PhotosController extends Controller
     public function index()
     {
         $photos = Photo::all()->toArray();
-        if(count($photos) == 2){
-            $photos = array_chunk($photos, 1);
-        }else{
-            $photos = array_chunk($photos, count($photos) / 2);
-        }
     
         $main_banner = Section::get_banner();
 
 //        print_r($photos);die();
-        return view('main_views.photos.index')->with(array('photos' => $photos,
+        return view('main_views_fixed.photos.index')->with(array('photos' => $photos,
                 'main_banner' => $main_banner));
     }
 

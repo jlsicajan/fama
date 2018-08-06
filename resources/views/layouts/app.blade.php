@@ -57,35 +57,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#anchor00"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="/home"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="ajax_link" data-href="/programacion">
+                    <a href="/programacion">
                         Programación
                     </a>
                 </li>
                 <li>
-                    <a class="ajax_link" data-href="/staff">
+                    <a href="/staff">
                         Staff
                     </a>
                 </li>
                 <li>
-                    <a class="ajax_link" data-href="/cine">
+                    <a href="/cine">
                         Cine
                     </a>
                 </li>
                 <li>
-                    <a class="ajax_link" data-href="#">Podcast</a>
-                </li>
-                <li>
-                    <a class="ajax_link" data-href="fotos">
+                    <a href="fotos">
                         Fotos
                     </a>
                 </li>
                 <li>
-                    <a class="ajax_link" data-href="los20">
+                    <a href="los20">
                         Los 20+
                     </a>
                 </li>

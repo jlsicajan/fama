@@ -4,10 +4,6 @@
     <div class="main_content_container">
         @include('elements.mia-hdear', ['main_texts' => array('EL EQUIPO', 'CONOCENOS')])
         <div class="container">
-            @include('elements.for_grid.space_block', ['classes' => 'hidden-sm-down'])
-            @include('elements.for_grid.middle_space_block', ['classes' => ''])
-            @include('elements.for_grid.middle_space_block', ['classes' => 'hidden-sm-down'])
-
             <div class="row">
                 @foreach($staff_separated as $staff_item)
                     <div class="col-12 col-sm-9 col-md-6 col-lg-6">

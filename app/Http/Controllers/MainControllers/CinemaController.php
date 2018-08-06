@@ -18,15 +18,11 @@ class CinemaController extends Controller
     public function index()
     {
         $movies = Billboard::with('location')->get()->toArray();
-        if(count($movies) == 2){
-            $movies = array_chunk($movies, 1);
-        }else{
-            $movies = array_chunk($movies, count($movies) / 2);
-        }
+
         $main_banner = Section::get_banner();
     
         // print_r($movies);die();
-        return view('main_views.cinema.index')->with(array('movies' => $movies,
+        return view('main_views_fixed.cinema.index')->with(array('movies' => $movies,
                 'main_banner' => $main_banner));
     }
 

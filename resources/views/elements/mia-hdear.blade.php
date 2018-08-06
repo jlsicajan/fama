@@ -47,9 +47,9 @@
                         </div>
                     @endforeach
                 </div>
-                <h2 class="subtitle-text">Share & Promote your music online</h2>
+                <h2 class="subtitle-text">FAMA 102.5</h2>
                 <div class="voffset50"></div>
-                <a href="#" class="btn btn-invert">Learn more</a>
+                {{--<a href="#" class="btn btn-invert">CONOCE MAS</a>--}}
             </div>
         </div>
     </section>
