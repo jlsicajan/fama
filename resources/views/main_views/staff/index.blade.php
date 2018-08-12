@@ -10,19 +10,59 @@
             @include('elements.mia-hdear', ['main_banner', $main_banner])
         @endif
         <div class="container">
-            @if(!$hide_banner)
-                @include('elements.for_grid.space_block_header', ['classes' => ''])
-            @else
-                @include('elements.for_grid.space_block_navbar', ['classes' => ''])
-            @endif
+        @if(!$hide_banner)
+            @include('elements.for_grid.space_block_header', ['classes' => ''])
+        @else
+            @include('elements.for_grid.space_block_navbar', ['classes' => ''])
+        @endif
 
-            <div class="row">
-                @foreach($staff_separated as $staff_item)
-                    <div class="col-12 col-sm-9 col-md-6 col-lg-6">
-                        @include('elements.staff.card_staff', ['image_url' => $staff_item['imagen'], 'card_title' => $staff_item['orden_mostrar'], 'card_text' => $staff_item['texto'], 'staff_id' => $staff_item['id'], 'staff_name' => $staff_item['locutor']])
+        <!-- BIOGRAPHY -->
+            <section class="section biography inverse-color" id="anchor03">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="voffset70"></div>
+                            <div class="separator-icon">
+                                <i class="fa fa-microphone"></i>
+                            </div>
+                            <div class="voffset30"></div>
+                            <p class="pretitle">About the band</p>
+                            <div class="voffset20"></div>
+                            <h2 class="title">biography</h2>
+                            <div class="voffset110"></div>
+                        </div>
                     </div>
-                @endforeach
-            </div>
+
+                    @foreach($staff_separated as $staff_item)
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <img src="images/demo/biography/biography.jpg" alt="">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="voffset50"></div>
+                                <div class="quote">
+                                    <p>"If I can play one note and make you cry, then that's better than thouse fancy
+                                        dancers playing twenty notes."</p>
+                                    <p class="author">Robbie Robertson</p>
+                                </div>
+                                <div class="description">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam iure blanditiis
+                                        velit, suscipit quidem fuga, magni repudiandae atque placeat sint corporis
+                                        commodi
+                                        praesentium dolore necessitatibus minima nemo ipsam, perspiciatis libero, quos.
+                                        Obcaecati consectetur vel nostrum praesentiu.</p>
+                                    <p>Obcaecati consectetur vel nostrum praesentium dolore necessitatibus minima nemo
+                                        ipsam, perspiciatis libero, quos, odio quaerat asperiores repudiandae atque
+                                        placeat
+                                        sint corporis commodi onsectetur adipisicing elit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="voffset150"></div>
+                </div>
+            </section>
+
             <div class="modal fade" id="staff_modal">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -38,6 +78,7 @@
                     </div>
                 </div>
             </div>
+            {{--@include('elements.staff.card_staff', ['image_url' => $staff_item['imagen'], 'card_title' => $staff_item['orden_mostrar'], 'card_text' => $staff_item['texto'], 'staff_id' => $staff_item['id'], 'staff_name' => $staff_item['locutor']])--}}
         </div>
     </div>
     @include('elements.radio.live_radio_element')
