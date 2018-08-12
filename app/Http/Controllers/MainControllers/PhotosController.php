@@ -18,7 +18,6 @@ class PhotosController extends Controller
     public function index()
     {
         $photos = Photo::all()->toArray();
-
         $main_banner = Section::get_banner();
 
 //        print_r($photos);die();

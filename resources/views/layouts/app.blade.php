@@ -22,10 +22,29 @@
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-    <link href="/public/css/app.css" rel="stylesheet">
-    <script src="../../../resources/assets/muziq/scripts/vendor/modernizr.js"></script>
-    <script src="../../../resources/assets/muziq/scripts/vendor/jquery.js"></script>
-    <script src="../../../resources/assets/muziq/scripts/vendor/bootstrap.js"></script>
+    <link rel="stylesheet" href="/public/muziq/vendor/bootstrap.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/superslides.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/owl.carousel.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/owl.transitions.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/flickity.min.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/swipebox.min.css">
+    <link rel="stylesheet" href="/public/muziq/vendor/TimeCircles.css">
+
+    <link rel="stylesheet" href="/public/muziq/main-hiphop.css">
+    <link rel="stylesheet" href="/public/muziq/demo.css">
+
+    <link rel="stylesheet" href="/public/muziq/colors/color-lightyellow.css">
+    <link rel="stylesheet" href="/public/muziq/colors/color-lightblue.css">
+    <link rel="stylesheet" href="/public/muziq/colors/color-purple.css">
+    <link rel="stylesheet" href="/public/muziq/colors/color-green.css">
+    <link rel="stylesheet" href="/public/muziq/colors/color-militar.css">
+    <link rel="stylesheet" href="/public/muziq/colors/color-caqui.css">
+    <link rel="stylesheet" href="/public/muziq/colors/color-lightred.css">
+
+    <script src="/public/muziq/scripts/vendor/modernizr.js"></script>
+    <script src="/public/muziq/scripts/vendor/jquery.js"></script>
+    <script src="/public/muziq/scripts/vendor/bootstrap.js"></script>
     @yield('head')
 </head>
 <body data-spy="scroll" data-target="#navbar-muziq" data-offset="80">
@@ -115,18 +134,19 @@
 <![endif]-->
 <!-- Scripts -->
 
-<script src="../../../resources/assets/muziq/scripts/vendor/jquery.superslides.min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/flickity.pkgd.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/audio.min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/twitterFetcher_min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/isotope.pkgd.min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/jquery.swipebox.min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/TimeCircles.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/owl.carousel.min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/vendor/jquery.parallax.min.js"></script>
-<script src="../../../resources/assets/muziq/scripts/discography.js"></script>
-<script src="../../../resources/assets/muziq/scripts/news.js"></script>
-<script src="../../../resources/assets/muziq/scripts/main.js"></script>
+<script src="/public/muziq/scripts/vendor/jquery.superslides.min.js"></script>
+<script src="/public/muziq/scripts/vendor/flickity.pkgd.js"></script>
+<script src="/public/muziq/scripts/vendor/audio.min.js"></script>
+<script src="/public/muziq/scripts/vendor/twitterFetcher_min.js"></script>
+<script src="/public/muziq/scripts/vendor/isotope.pkgd.min.js"></script>
+<script src="/public/muziq/scripts/vendor/jquery.swipebox.min.js"></script>
+<script src="/public/muziq/scripts/vendor/TimeCircles.js"></script>
+<script src="/public/muziq/scripts/vendor/owl.carousel.min.js"></script>
+<script src="/public/muziq/scripts/vendor/jquery.parallax.min.js"></script>
+<script src="/public/muziq/scripts/discography.js"></script>
+<script src="/public/muziq/scripts/news.js"></script>
+<script src="/public/muziq/scripts/main.js"></script>
+
 <script src="/public/js/app.js"></script>
 <script src="/public/js/nav_movements.js"></script>
 <script src="/public/js/main_views/content/pagination_manager.js"></script>

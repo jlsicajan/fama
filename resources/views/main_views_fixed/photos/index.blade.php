@@ -2,8 +2,20 @@
 
 @section('content')
     <div class="main_content_container">
-    @include('elements.mia-hdear', ['main_texts' => array('FOTOS', 'GALERIA')])
-    <!-- LATEST MEDIA -->
+    <!-- INTRO -->
+        <section class="intro intro-mini full-width jIntro bg-blog" id="anchor00">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h1 class="primary-title">Galeria</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LATEST MEDIA -->
         <section class="section last-media pattern inverse-color bg-patern" id="anchor06">
             <div class="container">
                 <div class="row">
@@ -23,13 +35,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="filters">
-                            <li data-filter="*" class="is-checked wow fadeInUp" data-wow-delay="0.5s">All</li>
-                            <li data-filter=".music" class="wow fadeInUp" data-wow-delay="0.8s">Music</li>
-                            <li data-filter=".concert" class="wow fadeInUp" data-wow-delay="1s">Concert</li>
-                            <li data-filter=".video" class="wow fadeInUp" data-wow-delay="1.2s">Video</li>
-                            <li data-filter=".dj" class="wow fadeInUp" data-wow-delay="1.4s">Dj</li>
-                            <li data-filter=".events" class="wow fadeInUp" data-wow-delay="1.6s">Events</li>
-                            <li data-filter=".party" class="wow fadeInUp" data-wow-delay="1.8s">Party</li>
+                            <li data-filter="*" class="is-checked wow fadeInUp" data-wow-delay="0.5s">Todo</li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +47,8 @@
                             @if(isset($photos) && !empty($photos))
                                 @foreach($photos as $photo)
                                     <div class="thumbnail small music">
-                                        <a href="{{ env('URL_SOURCE_MULTIMEDIA_1') . $photo['nombre'] }}" class="swipebox">
+                                        <a href="{{ env('URL_SOURCE_MULTIMEDIA_1') . $photo['nombre'] }}"
+                                           class="swipebox">
                                             <img src="{{ env('URL_SOURCE_MULTIMEDIA_1') . $photo['nombre'] }}" alt="">
                                             <div class="rollover">
                                                 <i class="plus"></i>
