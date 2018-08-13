@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-12 col-md-12 py-md-4 px-6rem">
             @if(isset($home_categories[1]) && !empty($home_categories[1]))
-                @if(isset($home_categories[1]['articles']) && !empty($home_categories[1]['articles']))
+                @if(isset($home_categories[1]['articlFes']) && !empty($home_categories[1]['articles']))
                     @include('elements.for_grid.multiple_articles', ['title' => $home_categories[1]['nombre'], 'gradient' => 1, 'category_id' => $home_categories[1]['id'], 'articles' => $home_categories[1]['articles']])
                 @endif
             @endif

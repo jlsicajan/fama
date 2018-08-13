@@ -42,6 +42,9 @@ class HomeController extends Controller
         $main_banner = Section::get_banner();
 
         $week_programation = $this->get_week_programation();
+        $news = News::where('activo', '=', 1)->orderBy('fecha', 'desc')->limit(5)->get()->toArray();
+//        print_r($news);die();
+
 //        $main_background = Section::get_background();
 //        $to_20_background = Section::get_the20_background();
 //        $to_20_url = Section::get_the20_url();
@@ -51,7 +54,7 @@ class HomeController extends Controller
 //        print_r(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show, 'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation));die();
 
         return view($view)->with(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show,
-            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation));
+            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation, 'news' => $news));
     }
 
     public function article_one($article_id, \Illuminate\Http\Request $request){
