@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Article;
+use App\Billboard;
 use App\Http\Requests\Request;
 use App\Section;
 use App\Slide;
@@ -40,6 +41,7 @@ class HomeController extends Controller
         $current_show = $this->get_current_show();
         $news = News::where('activo', '=', 1)->get()->toArray();
         $main_banner = Section::get_banner();
+        $movies = Billboard::with('location')->get()->toArray();
 
         $week_programation = $this->get_week_programation();
         $news = News::where('activo', '=', 1)->orderBy('fecha', 'desc')->limit(5)->get()->toArray();
@@ -54,7 +56,7 @@ class HomeController extends Controller
 //        print_r(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show, 'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation));die();
 
         return view($view)->with(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show,
-            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation, 'news' => $news));
+            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation, 'news' => $news, 'movies' => $movies));
     }
 
     public function article_one($article_id, \Illuminate\Http\Request $request){
