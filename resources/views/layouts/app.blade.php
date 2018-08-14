@@ -82,32 +82,32 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="/">
-                        Inicio
+                        INICIO
                     </a>
                 </li>
                 <li>
                     <a href="/programacion">
-                        Programación
+                        PROGRAMACIÓN
                     </a>
                 </li>
                 <li>
                     <a href="/staff">
-                        Staff
+                        STAFF
                     </a>
                 </li>
                 <li>
                     <a href="/cine">
-                        Cine
+                        CINE
                     </a>
                 </li>
                 <li>
                     <a href="fotos">
-                        Fotos
+                        FOTOS
                     </a>
                 </li>
                 <li>
                     <a href="los20">
-                        Los 20+
+                        LOS 20+
                     </a>
                 </li>
             </ul>
@@ -117,7 +117,17 @@
 
 @yield('content')
 @yield('scripts')
-
+<style type="text/css">
+    .time{
+        display: none !important;
+    }
+</style>
+<script type="text/javascript">
+    $(content).ready(function(){
+        console.log("ready");
+        $('.audiojs').addClass('playing');
+    });
+</script>
 <footer>
     <div class="container">
         <p class="copy">© 2018 Radio fama 102.5 Todos los derechos reservados. by <a class="color-primary"

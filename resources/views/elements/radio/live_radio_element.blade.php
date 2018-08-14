@@ -6,9 +6,9 @@
             <p class="artist-name">PROGRAMACION DE HOY</p>
         </div>
         <div class="player-content">
-            <audio preload></audio>
+            <audio preload autoplay></audio>
             <ol class="playlist">
-                <li><a href="#" data-src="https://rcn.radioonlinehd.net:8010/fama1025">Radio fama en vivo</a></li>
+                <li><a href="https://rcn.radioonlinehd.net:8010/fama1025" data-src="https://rcn.radioonlinehd.net:8010/fama1025">Radio fama en vivo</a></li>
             </ol>
         </div>
     </div>

@@ -125,7 +125,7 @@
                 <div class="voffset120"></div>
             </div>
         </section>
-        @include('elements.radio.live_radio')
+        @include('elements.radio.live_radio_element')
     </div>
 @endsection
 
