@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\MainControllers;
 
+use App\Album;
+use App\Multimedia;
 use App\Photo;
+use App\PhotoAlbum;
 use App\Section;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -17,12 +20,26 @@ class PhotosController extends Controller
      */
     public function index()
     {
-        $photos = Photo::all()->toArray();
+//        $photos = Photo::all()->toArray();
         $main_banner = Section::get_banner();
+        $album = Album::all();
 
-//        print_r($photos);die();
-        return view('main_views_fixed.photos.index')->with(array('photos' => $photos,
-                'main_banner' => $main_banner));
+        $multimedia_photos = array();
+
+        foreach ($album as $al) {
+            $identifier = 'album_' . $al->id;
+            $photos = PhotoAlbum::where('identificador', '=', $identifier)->get();
+
+            if($photos){
+                $multimedia_photos[$al->id] = $photos->toArray();
+
+            }
+        }
+//        print_r($album);die();
+
+//        print_r($multimedia_photos);die();
+        return view('main_views_fixed.photos.index')->with(array('photos' => $multimedia_photos,
+            'main_banner' => $main_banner, 'albums' => $album));
     }
 
     /**
@@ -38,7 +55,7 @@ class PhotosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,7 +66,7 @@ class PhotosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -60,7 +77,7 @@ class PhotosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -71,8 +88,8 @@ class PhotosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -83,7 +100,7 @@ class PhotosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

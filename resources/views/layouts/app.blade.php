@@ -49,23 +49,23 @@
 </head>
 <body data-spy="scroll" data-target="#navbar-muziq" data-offset="80">
 <!-- LOADER -->
-{{--<div id="mask">--}}
-    {{--<div class="loader">--}}
-        {{--<!-- <img src="images/loading.gif" alt='loading'> -->--}}
-        {{--<div class="cssload-container">--}}
-            {{--<div class="cssload-shaft1"></div>--}}
-            {{--<div class="cssload-shaft2"></div>--}}
-            {{--<div class="cssload-shaft3"></div>--}}
-            {{--<div class="cssload-shaft4"></div>--}}
-            {{--<div class="cssload-shaft5"></div>--}}
-            {{--<div class="cssload-shaft6"></div>--}}
-            {{--<div class="cssload-shaft7"></div>--}}
-            {{--<div class="cssload-shaft8"></div>--}}
-            {{--<div class="cssload-shaft9"></div>--}}
-            {{--<div class="cssload-shaft10"></div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div id="mask">
+    <div class="loader">
+        <!-- <img src="images/loading.gif" alt='loading'> -->
+        <div class="cssload-container">
+            <div class="cssload-shaft1"></div>
+            <div class="cssload-shaft2"></div>
+            <div class="cssload-shaft3"></div>
+            <div class="cssload-shaft4"></div>
+            <div class="cssload-shaft5"></div>
+            <div class="cssload-shaft6"></div>
+            <div class="cssload-shaft7"></div>
+            <div class="cssload-shaft8"></div>
+            <div class="cssload-shaft9"></div>
+            <div class="cssload-shaft10"></div>
+        </div>
+    </div>
+</div>
 <!-- HEADER -->
 <header id="jHeader">
     <nav class="navbar navbar-default" role="navigation">

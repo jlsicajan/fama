@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="main_content_container">
-    <!-- INTRO -->
+        <!-- INTRO -->
         <section class="intro intro-mini full-width jIntro bg-blog" id="anchor00">
             <div class="container">
                 <div class="row">
@@ -35,7 +35,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="filters">
-                            <li data-filter="*" class="is-checked wow fadeInUp" data-wow-delay="0.5s">Todo</li>
+                            @foreach($albums as $album)
+                                <li data-filter=".{{ $album->id }}" class="is-checked wow fadeInUp"
+                                    data-wow-delay="0.5s">{{ $album->nombre }}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -45,16 +48,19 @@
                         <div class="voffset50"></div>
                         <div class="thumbnails">
                             @if(isset($photos) && !empty($photos))
-                                @foreach($photos as $photo)
-                                    <div class="thumbnail small music">
-                                        <a href="{{ env('URL_SOURCE_MULTIMEDIA_1') . $photo['nombre'] }}"
-                                           class="swipebox">
-                                            <img src="{{ env('URL_SOURCE_MULTIMEDIA_1') . $photo['nombre'] }}" alt="">
-                                            <div class="rollover">
-                                                <i class="plus"></i>
-                                            </div>
-                                        </a>
-                                    </div>
+                                @foreach($photos as $identifier => $album_key)
+                                    @foreach($album_key as $photo)
+                                        <div class="thumbnail small {{ $identifier }}">
+                                            <a href="{{ env('URL_UPLOADS_GENERAL_PATH') . 'album_' . $identifier . '/' . $photo['nombre'] }}"
+                                               class="swipebox">
+                                                <img src="{{ env('URL_UPLOADS_GENERAL_PATH') . 'album_' . $identifier. '/'   . $photo['nombre'] }}"
+                                                     alt="">
+                                                <div class="rollover">
+                                                    <i class="plus"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 @endforeach
                             @endif
                         </div>
