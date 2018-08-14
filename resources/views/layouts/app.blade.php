@@ -79,7 +79,7 @@
             <a class="navbar-brand" href="/home"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right nav-jls">
                 <li>
                     <a href="/">
                         INICIO
@@ -120,6 +120,10 @@
 <style type="text/css">
     .time{
         display: none !important;
+    }
+
+    .nav-jls li a{
+        text-transform: uppercase !important;
     }
 </style>
 <script type="text/javascript">
