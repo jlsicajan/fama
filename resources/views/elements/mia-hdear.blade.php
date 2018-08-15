@@ -22,33 +22,35 @@
                             <div class="overlay"></div>
                             <div class="slides-container">
                                 @foreach($main_banner as $index => $banner)
-                                        {{--check if is main banner, to set text on the banner--}}
-                                        @if(isset($banner['route']))
-                                            <img src="{{ $banner['route'] }}">
-                                        @else
-                                            <img src="{{ $banner['route'] }}">
-                                        @endif
+                                    {{--check if is main banner, to set text on the banner--}}
+                                    @if(isset($banner['route']))
+                                        <img src="{{ $banner['route'] }}">
+                                    @else
+                                        <img src="{{ $banner['route'] }}">
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="vcenter text-center text-overlay">
                 <div class="logo-intro"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="">
                 </div>
                 <div id="owl-main-text" class="owl-carousel">
-                    @foreach($main_texts as $primary_text)
+                    @foreach($main_banner as $index => $banner)
                         <div class="item">
-                            <h1 class="primary-title">{{ $primary_text }}</h1>
+                            <h1 class="primary-title">{{ $banner['data']['texto_1'] }}</h1>
+                            <h2 class="subtitle-text">{{ $banner['data']['texto_2'] }}</h2>
+                            <div class="voffset50"></div>
+                            @if(!empty($banner['data']['link']))
+                                <a href="{{ $banner['data']['link'] }}" class="btn btn-invert">Conoce más</a>
+                            @endif
                         </div>
                     @endforeach
                 </div>
-                <h2 class="subtitle-text">FAMA 102.5</h2>
-                <div class="voffset50"></div>
-                {{--<a href="#" class="btn btn-invert">CONOCE MAS</a>--}}
             </div>
+
         </div>
     </section>
 @else
@@ -71,7 +73,8 @@
             </div>
 
             <div class="vcenter text-center text-overlay">
-                <div class="logo-intro"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt=""></div>
+                <div class="logo-intro"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="">
+                </div>
                 <div id="owl-main-text" class="owl-carousel">
                     <div class="item">
                         <h1 class="primary-title">Dope Beatmakers</h1>

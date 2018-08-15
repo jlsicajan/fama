@@ -17,7 +17,7 @@ class Section extends Model {
         $header_path = array();
 
         if($section_header){
-            $route_banner = Slide::where('id_tabla', '=', $section_header->id)->get()->toArray();
+            $route_banner = Slide::where('id_tabla', '=', $section_header->id)->orderBy('orden', 'ASC')->get()->toArray();
             if(count($route_banner) > 0){
                 foreach($route_banner as $banner){
                     $banner_path = env('URL_SLIDE_PATH')  . $banner['identificador'] . '/' . filter_var($banner['nombre'], FILTER_SANITIZE_ENCODED);
