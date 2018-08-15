@@ -52,7 +52,7 @@
                                             <span>Fecha:</span> {{ date("d M Y", strtotime($new['fecha'])) }}</h4>
                                         <h3 class="title post">{{ $new['titulo'] }}</h3>
                                         <p>{{ \App\Article::limit_words(strip_tags($new['contenido']), 60) }}</p>
-                                        <a href="{{ route('new_one', $new['id']) }}" target="_blank" class="btn rounded">Lee más</a>
+                                        <a href="{{ route('new_one', $new['id']) }}" class="btn rounded">Lee más</a>
                                     </div>
                                     <section class="section news-window">
                                         <div class="news-content"></div><!-- AJAX Dinamic Content -->

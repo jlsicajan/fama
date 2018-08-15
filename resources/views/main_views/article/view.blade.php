@@ -88,7 +88,7 @@
                                 <ul>
                                     @foreach($recent_news as $recent_new)
                                         <li>
-                                            <a href="{{ route('new_one', $new['id']) }}" class="pull-left">
+                                            <a href="{{ route('new_one', $recent_new['id']) }}" class="pull-left">
                                                 @if((substr($recent_new['imagen'], 0, 3) != 'htt') && (substr($recent_new['imagen'], 0, 2) != '//'))
                                                     <img src="{{ env('URL_ARTICLE_PATH') . $recent_new['imagen'] }}images/demo/blog/recent-post1.jpg" alt="{{ $recent_new['titulo'] }}">
                                                 @else
