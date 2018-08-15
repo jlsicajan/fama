@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
-                    <h1 class="primary-title">{{ $title | 'Titulo no encontrado' }}</h1>
-                    <h2 class="subtitle-text">{{ $description | 'Sin descripcion' }}</h2>
+                    <h1 class="primary-title">{{ isset($description) ? $description : 'No hay descripcion' }}</h1>
+                    <h2 class="subtitle-text">{{ isset($title) ? $title : 'Sin titulo' }}</h2>
                 </div>
             </div>
         </div>

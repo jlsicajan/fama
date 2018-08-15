@@ -26,7 +26,6 @@
                             <div class="voffset120"></div>
 
                             <div class="post-comments">
-                                <h4 class="title small">12 comments</h4>
 
                                 <!-- Comment -->
                             </div>
@@ -84,36 +83,24 @@
                                 </ul>
                             </div>
 
-                            <div class="title small">Recent posts</div>
+                            <div class="title small">Noticias recientes</div>
                             <div class="last-posts-sidebar">
                                 <ul>
-                                    <li>
-                                        <a href="#" class="pull-left">
-                                            <img src="images/demo/blog/recent-post1.jpg" alt="">
-                                        </a>
-                                        <div class="title-post">
-                                            <div class="date">31 May, 2015</div>
-                                            <p>Create your next website with Unity.</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="pull-left">
-                                            <img src="images/demo/blog/recent-post2.jpg" alt="">
-                                        </a>
-                                        <div class="title-post">
-                                            <div class="date">31 May, 2015</div>
-                                            <p>Create your next website with Unity.</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="pull-left">
-                                            <img src="images/demo/blog/recent-post3.jpg" alt="">
-                                        </a>
-                                        <div class="title-post">
-                                            <div class="date">31 May, 2015</div>
-                                            <p>Create your next website with Unity.</p>
-                                        </div>
-                                    </li>
+                                    @foreach($recent_news as $recent_new)
+                                        <li>
+                                            <a href="{{ route('new_one', $new['id']) }}" class="pull-left">
+                                                @if((substr($recent_new['imagen'], 0, 3) != 'htt') && (substr($recent_new['imagen'], 0, 2) != '//'))
+                                                    <img src="{{ env('URL_ARTICLE_PATH') . $recent_new['imagen'] }}images/demo/blog/recent-post1.jpg" alt="{{ $recent_new['titulo'] }}">
+                                                @else
+                                                    <img src="{{ $recent_new['imagen'] }}" alt="{{ $recent_new['titulo'] }}">
+                                                @endif
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">{{ date("d M Y", strtotime($recent_new['fecha'])) }}</div>
+                                                <p>{{ $recent_new['titulo'] }}</p>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
 
