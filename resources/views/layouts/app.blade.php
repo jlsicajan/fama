@@ -126,12 +126,6 @@
         text-transform: uppercase !important;
     }
 </style>
-<script type="text/javascript">
-    $(content).ready(function(){
-        console.log("ready");
-        $('.audiojs').addClass('playing');
-    });
-</script>
 <footer>
     <div class="container">
         <p class="copy">© 2018 Radio fama 102.5 Todos los derechos reservados. by <a class="color-primary"

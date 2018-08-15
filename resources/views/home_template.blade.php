@@ -8,9 +8,9 @@
 @endsection
 
 @section('content')
-    <div class="main_content_container">
     @include('elements.mia-hdear', ['main_texts' => array('INICIO', 'FAMA')])
 
+    <div class="main_content_container">
     <!-- NEWS -->
         <div class="section blog inverse-color pattern list-posts" id="anchor07">
             <div class="container">

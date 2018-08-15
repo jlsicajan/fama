@@ -13,7 +13,7 @@ class Section extends Model {
     }
 
     public static function get_banner(){
-    	$section_header = Section::where('nombre', '=', 'header')->first();
+    	$section_header = Section::where('nombre', '=', 'banner_principal')->first();
         $header_path = array();
 
         if($section_header){

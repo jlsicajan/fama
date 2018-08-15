@@ -1,6 +1,4 @@
 $(document).ready(function(){
-    console.log("helloe ther");
-    console.log(articles);
     $('.pagination_button').unbind('click').click(function(){
         let article_pag_value = $(this).attr('data-pag');
         $(this).parent().siblings().removeClass('active');
@@ -12,8 +10,6 @@ $(document).ready(function(){
 function show_articles_by_page(page){
     $('.articles_container').empty();
     console.log("show articles by oage");
-    console.info(page);
-    console.dir(articles[page]);
     articles[page].forEach(function(e, el){
         console.log("here is one");
         console.dir(e.autor);

@@ -22,14 +22,12 @@
                             <div class="overlay"></div>
                             <div class="slides-container">
                                 @foreach($main_banner as $index => $banner)
-                                    <div class="carousel-item z-4 {{ $index == 0 ? 'active' : '' }}">
                                         {{--check if is main banner, to set text on the banner--}}
                                         @if(isset($banner['route']))
                                             <img src="{{ $banner['route'] }}">
                                         @else
                                             <img src="{{ $banner['route'] }}">
                                         @endif
-                                    </div>
                                 @endforeach
                             </div>
                         </div>

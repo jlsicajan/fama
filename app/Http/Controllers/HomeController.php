@@ -42,6 +42,7 @@ class HomeController extends Controller
         $news = News::where('activo', '=', 1)->get()->toArray();
         $main_banner = Section::get_banner();
         $movies = Billboard::with('location')->get()->toArray();
+//        print_r($main_banner);die();
 
         $week_programation = $this->get_week_programation();
         $news = News::where('activo', '=', 1)->orderBy('fecha', 'desc')->limit(5)->get()->toArray();
