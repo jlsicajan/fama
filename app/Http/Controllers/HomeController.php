@@ -77,6 +77,27 @@ class HomeController extends Controller
         }
     }
 
+    public function new_one($new_id, \Illuminate\Http\Request $request){
+        //fix
+        $article = News::findOrFail($new_id);
+        if(empty($article)){
+            print_r('New not found');die();
+        }else{
+            $article->visita = $article->visita + 1;
+            $article->save();
+
+            $main_banner = Section::get_banner();
+
+//            $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
+//                ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
+
+            $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
+
+            return view($view)->with(array('new' => $article,
+                'main_banner' => $main_banner));
+        }
+    }
+
     function get_next_shows()
     {
         //Abraham's code adapted to laravel ORM, this have to be adapted correctly

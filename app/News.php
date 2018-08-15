@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model {
 
     protected $table = 'noticia';
+    public $timestamps = false;
     
     public function newQuery()
     {

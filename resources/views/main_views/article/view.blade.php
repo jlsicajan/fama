@@ -1,134 +1,248 @@
 @extends('layouts.app')
 
-@section('title', $article['titulo'])
-@section('description', \App\Article::limit_words(strip_tags($article['texto_uno']), 140))
-@if((substr($article['imagen'], 0, 3) != 'htt') && (substr($article['imagen'], 0, 2) != '//'))
-    @section('og_image', env('URL_ARTICLE_PATH') . $article['imagen'])
-@else
-    @section('og_image', $article['imagen'])
-@endif
-@section('head')
-@endsection
+@section('title', 'Rafio fama')
+@section('description', 'Radio fama 102.5 conoce al equipo')
+@section('og_image', env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo())
 
 @section('content')
     <div class="main_content_container">
-        <div class="container">
-            @include('elements.for_grid.space_block_navbar', ['classes' => ''])
+    @include('elements.for_grid.into_muziq', ['title' => $new->titulo, 'description' => $new->fuente])
+    <!-- POST -->
+        <div class="section blog single-post pattern inverse-color" id="anchor07">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="post-details">
+                            @if((substr($new['imagen'], 0, 3) != 'htt') && (substr($new['imagen'], 0, 2) != '//'))
+                                <img class="featured-image" src="{{ env('URL_ARTICLE_PATH') . $new['imagen'] }}">
+                            @else
+                                <img class="featured-image" src="{{ $new['imagen'] }}">
+                            @endif
+                            <h4 class="title small"><span class="gray">Posted by:</span> {{ $new->fuente }} <span
+                                        class="right"><i class="fa fa-commenting-o"></i> 3 comments</span></h4>
+                            <h3 class="title post-detail">{{ $new->titulo }}</h3>
+                            {!! $new->contenido !!}
 
-            <div class="row">
-                <div class="col-12 col-sm-9 bg-white mia-shadow py-2">
-                    <h3 class="color-primary">{{ $article['titulo'] }}</h3>
-                    <hr>
-                    @if((substr($article['imagen'], 0, 3) != 'htt') && (substr($article['imagen'], 0, 2) != '//'))
-                        <div class="img-clean-display img-cover"
-                             style="background-image: url('{{ env('URL_ARTICLE_PATH') . $article['imagen'] }}')"></div>
-                    @else
-                        <div class="img-clean-display img-cover"
-                             style="background-image: url('{{ $article['imagen'] }}')"></div>
-                    @endif
-                    @if(isset($article['codigo_api']) && !empty($article['codigo_api']))
-                        <br>
-                        <iframe class="embed-responsive-item img-clean-display" width="100%"
-                                src="{{ str_replace(array('https://youtu.be/', 'https://www.youtube.com/watch?v='), 'https://youtube.be/embed/', $article['codigo_api']) }}?rel=0&autoplay=0&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=0"
-                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    @endif
-                    <p>{!! $article['texto_uno'] !!}</p>
-                    <strong>Visitas: {{ $article['visitas'] }}</strong>
-                </div>
-                <div class="col-12 col-sm-3">
-                    <br class="hidden-sm-up">
-                    <h5 class="color-primary">Compartir</h5>
-                    <div class="share mt-1" id="share">
-                        <div class="addthis_toolbox  addthis_default_style addthis_32x32_style"
-                             data-url="http://mia937.elcaminoweb.com/articulo/{{ $article['id'] }}" data-title="mia">
-                            <a class="addthis_button_facebook cursor-pointer"></a>
-                            <a class="addthis_button_twitter cursor-pointer"></a>
-                            <a class="addthis_button_google_plusone_share cursor-pointer"></a>
-                            <a class="addthis_button_whatsapp cursor-pointer"></a>
-                        </div>
+                            <div class="voffset120"></div>
+
+                            <div class="post-comments">
+                                <h4 class="title small">12 comments</h4>
+
+                                <!-- Comment -->
+                            </div>
+
+                            <div class="voffset80"></div>
+
+                        </article>
                     </div>
-                    <div class="bg-grid-default" style="height: 99%"></div>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="font_7">Artículos relacionados</h2>
-                </div>
-                <hr>
-                @foreach($articles_related as $article_related)
-                    <div class="d-block col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-2">
-                        <button class="ajax_link text-no-decoration"
-                                data-href="{{ route('article_one', $article_related['id']) }}">
-                            <div class="article_container row border">
-                                @if((substr($article_related['imagen'], 0, 3) != 'htt') && (substr($article_related['imagen'], 0, 2) != '//'))
-                                    <div class="col-12 multiple_article img-cover"
-                                         style="background-image: url('{{ env('URL_ARTICLE_PATH') . $article_related['imagen'] }}')"></div>
-                                @else
-                                    <div class="col-12 multiple_article img-cover"
-                                         style="background-image: url('{{ $article_related['imagen'] }}')"></div>
-                                @endif
-                                <div class="col-12 p-2 mt-2">
-                                    <p class="date text-muted text-left">{{ $article_related['fecha'] }}</p>
-                                    <p class="title font-weight-bold text-left">{{ $article_related['titulo'] }}</p>
-                                    <p class="description text-muted text-left">{{ \App\Article::limit_words(strip_tags($article_related['texto_uno']), 35) }}
-                                        ...</p>
+
+                    <div class="col-md-3">
+                        <div class="sidebar">
+
+                            <div class="title small">Buscar</div>
+                            <div class="input-group search">
+                                <input type="text" class="form-control" placeholder="Ingrese palabra clave">
+                                <span class="input-group-btn">
+                  <button type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+                            </div>
+
+                            <div class="title small">Redes sociales</div>
+                            <ul class="social">
+                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li>
+                                <li class="tumblr"><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            </ul>
+
+                            <div class="advertisment">
+                                <div class="vcenter">
+                                    <p>advertisiment</p>
+                                    <p>300 x 250</p>
                                 </div>
                             </div>
-                        </button>
+
+                            <div class="voffset50"></div>
+
+                            <div class="title small">instagram feed</div>
+                            <div class="instagram-feed">
+                                <ul>
+                                    <li><img src="images/demo/blog/instagram1.jpg" alt=""></li>
+                                    <li><img src="images/demo/blog/instagram2.jpg" alt=""></li>
+                                    <li><img src="images/demo/blog/instagram3.jpg" alt=""></li>
+                                    <li><img src="images/demo/blog/instagram4.jpg" alt=""></li>
+                                    <li><img src="images/demo/blog/instagram5.jpg" alt=""></li>
+                                    <li><img src="images/demo/blog/instagram6.jpg" alt=""></li>
+                                </ul>
+                            </div>
+
+                            <div class="title small">Recent posts</div>
+                            <div class="last-posts-sidebar">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="pull-left">
+                                            <img src="images/demo/blog/recent-post1.jpg" alt="">
+                                        </a>
+                                        <div class="title-post">
+                                            <div class="date">31 May, 2015</div>
+                                            <p>Create your next website with Unity.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pull-left">
+                                            <img src="images/demo/blog/recent-post2.jpg" alt="">
+                                        </a>
+                                        <div class="title-post">
+                                            <div class="date">31 May, 2015</div>
+                                            <p>Create your next website with Unity.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pull-left">
+                                            <img src="images/demo/blog/recent-post3.jpg" alt="">
+                                        </a>
+                                        <div class="title-post">
+                                            <div class="date">31 May, 2015</div>
+                                            <p>Create your next website with Unity.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="title small">Tags</div>
+                            <div class="list-tags">
+                                <ul>
+                                    <li><a href="#">web design</a></li>
+                                    <li><a href="#">development</a></li>
+                                    <li><a href="#">css</a></li>
+                                    <li><a href="#">studio</a></li>
+                                    <li><a href="#">award</a></li>
+                                    <li><a href="#">mobile</a></li>
+                                    <li><a href="#">ios</a></li>
+                                    <li><a href="#">ui / ux</a></li>
+                                    <li><a href="#">portfolio</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="title small">Comments</div>
+                            <ul class="menu-sidebar">
+                                <li class="active">recent</li>
+                                <li>popular</li>
+                            </ul>
+                            <div class="last-comments">
+                                <ul>
+                                    <li>
+                                        <div class="header-comment">
+                                            <a href="#" class="pull-left">
+                                                <img src="images/demo/blog/comments1.jpg" alt="">
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">1 hour ago</div>
+                                                <p>Ethan Martin say:</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment">
+                                            <p>“ Thanks so much for the awesome customer service. So many companies,
+                                                large and small, have a lot to learn from you. Great job! ”</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-comment">
+                                            <a href="#" class="pull-left">
+                                                <img src="images/demo/blog/comments2.jpg" alt="">
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">1 hour ago</div>
+                                                <p>Ethan Martin say:</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment">
+                                            <p>“ Thanks so much for the awesome customer service. So many companies,
+                                                large and small, have a lot to learn from you. Great job! ”</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-comment">
+                                            <a href="#" class="pull-left">
+                                                <img src="images/demo/blog/comments3.jpg" alt="">
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">1 hour ago</div>
+                                                <p>Ethan Martin say:</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment">
+                                            <p>“ Thanks so much for the awesome customer service. So many companies,
+                                                large and small, have a lot to learn from you. Great job! ”</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="title small"><i class="fa fa-twitter"></i> Twitter widget</div>
+                            <div class="last-tweets">
+                                <ul>
+                                    <li>
+                                        <div class="header-comment">
+                                            <a href="#" class="pull-left">
+                                                <img src="images/demo/blog/tweet.jpg" alt="">
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">‏@EnvatoMarket 1h</div>
+                                                <p>Envato Market</p>
+                                            </div>
+                                        </div>
+                                        <div class="tweet">
+                                            <p>“ Thanks so much for the awesome customer service. So many companies,
+                                                large and small, have a lot to learn from you. Great job! ”</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-comment">
+                                            <a href="#" class="pull-left">
+                                                <img src="images/demo/blog/tweet.jpg" alt="">
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">‏@EnvatoMarket 1h</div>
+                                                <p>Envato Market</p>
+                                            </div>
+                                        </div>
+                                        <div class="tweet">
+                                            <p>“ Thanks so much for the awesome customer service. So many companies,
+                                                large and small, have a lot to learn from you. Great job! ”</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-comment">
+                                            <a href="#" class="pull-left">
+                                                <img src="images/demo/blog/tweet.jpg" alt="">
+                                            </a>
+                                            <div class="title-post">
+                                                <div class="date">‏@EnvatoMarket 1h</div>
+                                                <p>Envato Market</p>
+                                            </div>
+                                        </div>
+                                        <div class="tweet">
+                                            <p>“ Thanks so much for the awesome customer service. So many companies,
+                                                large and small, have a lot to learn from you. Great job! ”</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                @endforeach
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-12">
-                    <div id="fb-comments" class="fb-comments"
-                         data-href="http://mia937.elcaminoweb.com/articulo/{{ $article['id'] }}" data-width="100%"
-                         data-numposts="5"></div>
                 </div>
             </div>
         </div>
     </div>
     @include('elements.radio.live_radio_element')
-@endsection
-
-<div id="fb-root"></div>
-@section('after_body')
-    <style type="text/css">
-        footer {
-            position: absolute;
-            /* bottom: -22px; */
-            margin-bottom: 70px;
-            width: 100%;
-        }
-
-        .slideInLeft, .addthis-smartlayers {
-            display: none !important;
-        }
-    </style>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.0&appId=1765073390470250&autoLogAppEvents=1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // $("#at-share-dock").prependTo("#share");
-            if ($(window).width() < 860) {
-                $('iframe, img').each(function () {
-                    $(this).css('width', '100%');
-                });
-            }
-        });
-    </script>
-    <script async defer src="//www.instagram.com/embed.js"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5afbebe2d2bf457e"
-            async=”async”></script>
+    <script src="/public/js/nav_movements.js"></script>
 @endsection
