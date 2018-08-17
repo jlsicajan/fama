@@ -14,8 +14,8 @@
                 </div>
             </div>
         </section>
-        <!-- FEATURED ARTIST -->
-        <section class="section inverse-color featured-artists" id="anchor02">
+        <!-- FEATURED RELASES -->
+        <section class="section featured-shop">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -24,43 +24,34 @@
                             <i class="fa fa-microphone"></i>
                         </div>
                         <div class="voffset30"></div>
-                        <p class="pretitle">Proximos estrenos</p>
-                        <div class="voffset20"></div>
-                        <h2 class="title">Cartelera</h2>
+                        <p class="pretitle">Cartelera</p>
                         <div class="voffset80"></div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="voffset20"></div>
-                        <div class="js-flickity"
-                             data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;wrapAround&quot;: true, &quot;contain&quot;: true, &quot;prevNextButtons&quot;: false }">
-                            @if(isset($movies) && !empty($movies))
-                                @foreach($movies as $movie)
-                                    <div class="gallery-cell col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        <div class="featured-artist">
-                                            <div class="image">
-                                                <img src="{{ env('URL_SOURCE_CINEMA') .  $movie['imagen'] }}" alt="">
-                                            </div>
-                                            <div class="rollover">
-                                                <ul class="social">
-                                                    <li><a href="{{ $movie['url_youtube'] }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                                                </ul>
-                                                <div class="text">
-                                                    <p class="title-artist">{{ $movie['titulo'] }}</p>
-                                                    <p>{{ \App\Article::limit_words(strip_tags($movie['sinopsis']), 25) }}</p>
-                                                </div>
-                                            </div>
+                    @if(isset($movies) && !empty($movies))
+                        @foreach($movies as $movie)
+                            <div class="col-lg-3 col-md-4 col-xs-6">
+                                <div class="shop-item">
+                                    <div class="cover">
+                                        <img src="{{ env('URL_SOURCE_CINEMA') .  $movie['imagen'] }}" alt="">
+                                        <div class="rollover">
+                                            <p><a href="{{ route('cine_one', $movie['id']) }}" class="btn rounded icon"><i class="fa fa-plus"></i> Leer más</a></p>
                                         </div>
                                     </div>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
+                                    <div class="info">
+                                        <hr>
+                                        <p class="artist">{{ $movie['titulo'] }}</p>
+                                        <p>{{ \App\Article::limit_words(strip_tags($movie['sinopsis']), 25) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
-                <div class="voffset120"></div>
             </div>
         </section>
+
     </div>
     @include('elements.radio.live_radio_element')
     <style type="text/css">

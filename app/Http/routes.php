@@ -33,6 +33,7 @@ Route::get('/alfombrarosa/', ['as'   => 'pink_carpet', 'uses' => 'MainController
 
 Route::get('/articulo/{articulo_id}', ['as'   => 'article_one', 'uses' => 'HomeController@article_one']);
 Route::get('/noticia/{new_id}', ['as'   => 'new_one', 'uses' => 'HomeController@new_one']);
+Route::get('/cine/{cine_id}', ['as'   => 'cine_one', 'uses' => 'MainControllers\CinemaController@cine_one']);
 
 Route::get('/contenido/{category}/{subcategory}', ['as'   => 'content', 'uses' => 'MainControllers\ContentController@index']);
 

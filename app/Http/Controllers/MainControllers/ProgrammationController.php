@@ -204,7 +204,7 @@ class ProgrammationController extends Controller
             if($datosDDPs->id_php == date('N')){
                 array_push($result['active'], ['active', $datosDDPs->nombre, $datosDDPs->id_php, $resultadoPPD]);
             }else{
-                array_push($result['inactive'], ['inactive', $datosDDPs->nombre, $datosDDPs->id_php, $resultadoPPD]);
+                array_push($result['active'], ['active', $datosDDPs->nombre, $datosDDPs->id_php, $resultadoPPD]);
             }
         }
 
