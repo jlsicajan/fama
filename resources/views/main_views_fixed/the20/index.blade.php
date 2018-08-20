@@ -14,7 +14,7 @@
                             <h1 class="primary-title">Los 20</h1>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
         </section>
