@@ -76,37 +76,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
             <ul class="nav navbar-nav navbar-right nav-jls">
                 <li>
-                    <a href="/">
+                    <a href="{{ route('home') }}">
                         INICIO
                     </a>
                 </li>
                 <li>
-                    <a href="/programacion">
+                    <a href="{{ route('pro') }}">
                         PROGRAMACIÓN
                     </a>
                 </li>
                 <li>
-                    <a href="/staff">
+                    <a href="{{ route('staff') }}">
                         STAFF
                     </a>
                 </li>
                 <li>
-                    <a href="/cine">
+                    <a href="{{ route('cinema') }}">
                         CINE
                     </a>
                 </li>
                 <li>
-                    <a href="fotos">
+                    <a href="{{ route('photos') }}">
                         FOTOS
                     </a>
                 </li>
                 <li>
-                    <a href="los20">
+                    <a href="{{ route('the20') }}">
                         LOS 20+
                     </a>
                 </li>
@@ -132,7 +132,7 @@
                                                                                      href="https://elcaminoweb.com.gt"
                                                                                      target="_blank">El Camino Web.</a>
         <ul class="menu-footer">
-            <li><a href="/">Home</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
         </ul>
     </div>
 </footer>

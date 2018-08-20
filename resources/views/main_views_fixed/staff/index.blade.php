@@ -6,6 +6,18 @@
 
 @section('content')
     <div class="main_content_container">
+        <!-- INTRO -->
+        <section class="intro intro-mini full-width jIntro bg-blog" id="anchor00">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <h1 class="primary-title">Staff</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- BIOGRAPHY -->
         <section class="section biography inverse-color" id="anchor03">
             <div class="container">
@@ -18,28 +30,26 @@
                         <div class="voffset30"></div>
                         <p class="pretitle">Conoce al equipo</p>
                         <div class="voffset20"></div>
-                        <h2 class="title">staff</h2>
-                        <div class="voffset110"></div>
+                        <div class="voffset30"></div>
+
                     </div>
                 </div>
 
-                @foreach($staff_separated as $staff_item)
-                    <div class="row">
-                        <div class="col-lg-6">
+                <div class="row">
+                    @foreach($staff_separated as $staff_item)
+                        <div class="col-md-6">
                             <img src="{{ env('URL_SOURCE') }}/uploads/staff/{{ $staff_item['imagen'] }}" alt="">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-6">
                             <div class="voffset50"></div>
                             <div class="quote">
-                                <p>{{ \App\Article::limit_words(strip_tags($staff_item['texto']), 15) }}</p>
+                                <p >{{ \App\Article::limit_words(strip_tags($staff_item['texto']), 20) }}</p>
                                 <p class="author">{{ $staff_item['locutor'] }}</p>
                             </div>
-                            <div class="description">
-                                <p>{{ \App\Article::limit_words(strip_tags($staff_item['texto']), 70) }}</p>
-                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
+
                 <div class="voffset150"></div>
             </div>
         </section>

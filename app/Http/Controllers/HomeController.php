@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
-    
+
     /*
     |--------------------------------------------------------------------------
     | Home Controller
@@ -26,7 +26,7 @@ class HomeController extends Controller
     | controller as you wish. It is just here to get your app started!
     |
     */
-    
+
     /**
      * Create a new controller instance.
      *
@@ -39,32 +39,26 @@ class HomeController extends Controller
     {
         $next_shows = $this->get_next_shows();
         $current_show = $this->get_current_show();
-        $news = News::where('activo', '=', 1)->get()->toArray();
         $main_banner = Section::get_banner();
         $movies = Billboard::with('location')->get()->toArray();
-//        print_r($main_banner);die();
-
+        $todays_shows = $this->get_shows_for_today();
         $week_programation = $this->get_week_programation();
-        $news = News::where('activo', '=', 1)->orderBy('fecha', 'desc')->limit(5)->get()->toArray();
-//        print_r($news);die();
-
-//        $main_background = Section::get_background();
-//        $to_20_background = Section::get_the20_background();
-//        $to_20_url = Section::get_the20_url();
+        $news = News::where('activo', '=', 1)->orderBy('fecha', 'asc')->limit(5)->get()->toArray();
 
         $view = $request->ajax() ? 'main_views_content.home' : 'home_template';
 
-//        print_r(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show, 'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation));die();
 
         return view($view)->with(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show,
-            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation, 'news' => $news, 'movies' => $movies));
+            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation, 'news' => $news, 'movies' => $movies, 'todays_shows' => $todays_shows));
     }
 
-    public function article_one($article_id, \Illuminate\Http\Request $request){
+    public function article_one($article_id, \Illuminate\Http\Request $request)
+    {
         $article = Article::findOrFail($article_id);
-        if(empty($article)){
-            print_r('Article not found');die();
-        }else{
+        if (empty($article)) {
+            print_r('Article not found');
+            die();
+        } else {
             $article->visitas = $article->visitas + 1;
             $article->save();
             $main_banner = Section::get_banner();
@@ -74,16 +68,18 @@ class HomeController extends Controller
             $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
 
             return view($view)->with(array('article' => $article,
-                    'main_banner' => $main_banner, 'articles_related' => $articles_related));
+                'main_banner' => $main_banner, 'articles_related' => $articles_related));
         }
     }
 
-    public function new_one($new_id, \Illuminate\Http\Request $request){
+    public function new_one($new_id, \Illuminate\Http\Request $request)
+    {
         //fix
         $article = News::findOrFail($new_id);
-        if(empty($article)){
-            print_r('New not found');die();
-        }else{
+        if (empty($article)) {
+            print_r('New not found');
+            die();
+        } else {
             $article->visita = $article->visita + 1;
             $article->save();
 
@@ -127,8 +123,7 @@ class HomeController extends Controller
             if ($diaActual === 7) {
                 $diaActual = 1;
                 $ordenMostrar = "D.id_php DESC,";
-            }
-            else {
+            } else {
                 $diaActual++;
                 $ordenMostrar = "D.id_php ASC,";
             }
@@ -155,70 +150,68 @@ class HomeController extends Controller
         return $proximosProgramas;
     }
 
-    function get_current_show(){
+    function get_current_show()
+    {
         //Abrahams files header adapted
         $empresa_id = env('RADIO_ID');
         $diaActual = date("N");
         $horaActual = date("G");
-        $horaActual *=  100;
+        $horaActual *= 100;
 
-        $programaAlAireMnr="SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen FROM programacion PON INNER JOIN dia D ON D.id = PON.dia_id INNER JOIN programa PMA ON PMA.id = PON.programa_id WHERE PON.inicio_formato <= " . $horaActual . " AND D.id_php = " . $diaActual . " AND PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " ORDER BY concat(D.id_php, length(trim(PON.inicio_formato)), PON.inicio_formato) DESC LIMIT 0,1";
-        $resultadoPAAMnr= DB::select($programaAlAireMnr);
+        $programaAlAireMnr = "SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen FROM programacion PON INNER JOIN dia D ON D.id = PON.dia_id INNER JOIN programa PMA ON PMA.id = PON.programa_id WHERE PON.inicio_formato <= " . $horaActual . " AND D.id_php = " . $diaActual . " AND PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " ORDER BY concat(D.id_php, length(trim(PON.inicio_formato)), PON.inicio_formato) DESC LIMIT 0,1";
+        $resultadoPAAMnr = DB::select($programaAlAireMnr);
 
-        $programaAlAireMyr="SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen FROM programacion PON INNER JOIN dia D ON D.id = PON.dia_id INNER JOIN programa PMA ON PMA.id = PON.programa_id WHERE PON.inicio_formato >= " . $horaActual . " AND D.id_php = " . $diaActual . " AND PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " ORDER BY concat(D.id_php, length(trim(PON.inicio_formato)), PON.inicio_formato) ASC LIMIT 0,1";
-        $resultadoPAAMyr= DB::select($programaAlAireMyr);
+        $programaAlAireMyr = "SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen FROM programacion PON INNER JOIN dia D ON D.id = PON.dia_id INNER JOIN programa PMA ON PMA.id = PON.programa_id WHERE PON.inicio_formato >= " . $horaActual . " AND D.id_php = " . $diaActual . " AND PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " ORDER BY concat(D.id_php, length(trim(PON.inicio_formato)), PON.inicio_formato) ASC LIMIT 0,1";
+        $resultadoPAAMyr = DB::select($programaAlAireMyr);
 
 //        print_r($resultadoPAAMyr);die();
 //        print_r($resultadoPAAMyr);die();
 
-        if(empty($resultadoPAAMyr) && empty($resultadoPAAMnr)){
+        if (empty($resultadoPAAMyr) && empty($resultadoPAAMnr)) {
             $mensajePAAF = "Próximo programa";
             $tituloPAAF = "No hay programa";
             $imagenPAAF = "";
             $inicioPAAF = "00:00";
             $finPAAF = "00:00";
             return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
-        }else{
-            if(isset($resultadoPAAMnr[0]) && !empty($resultadoPAAMnr[0])){
+        } else {
+            if (isset($resultadoPAAMnr[0]) && !empty($resultadoPAAMnr[0])) {
                 $resultadoPAAMnr = $resultadoPAAMnr[0];
                 $inicioMnr = $this->convertirHoraMilitar($resultadoPAAMnr->inicio);
                 $finMnr = $this->convertirHoraMilitar($resultadoPAAMnr->fin);
             }
 
-            if(isset($resultadoPAAMyr[0]) && !empty($resultadoPAAMyr[0])) {
+            if (isset($resultadoPAAMyr[0]) && !empty($resultadoPAAMyr[0])) {
                 $resultadoPAAMyr = $resultadoPAAMyr[0];
                 $inicioMyr = $this->convertirHoraMilitar($resultadoPAAMyr->inicio);
                 $finMyr = $this->convertirHoraMilitar($resultadoPAAMyr->fin);
             }
 
 
-            if($resultadoPAAMnr && !$resultadoPAAMyr){
+            if ($resultadoPAAMnr && !$resultadoPAAMyr) {
                 $mensajePAAF = "Al aire ahora";
                 $tituloPAAF = $resultadoPAAMnr->Titulo;
                 $imagenPAAF = $resultadoPAAMnr->Imagen;
                 $inicioPAAF = $resultadoPAAMnr->inicio;
                 $finPAAF = $resultadoPAAMnr->fin;
                 return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
-            }
-            else if(!$resultadoPAAMnr && $resultadoPAAMyr){
+            } else if (!$resultadoPAAMnr && $resultadoPAAMyr) {
                 $mensajePAAF = "Próximo programa";
                 $tituloPAAF = $resultadoPAAMyr->Titulo;
                 $imagenPAAF = $resultadoPAAMyr->Imagen;
                 $inicioPAAF = $resultadoPAAMyr->inicio;
                 $finPAAF = $resultadoPAAMyr->fin;
                 return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
-            }
-            else if(!$resultadoPAAMnr && !$resultadoPAAMyr){
+            } else if (!$resultadoPAAMnr && !$resultadoPAAMyr) {
                 $mensajePAAF = "Próximo programa";
                 $tituloPAAF = "No hay programa";
                 $imagenPAAF = "";
                 $inicioPAAF = "00:00";
                 $finPAAF = "00:00";
                 return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
-            }
-            else{
+            } else {
                 // SI SON IGUALES
-                if( ($inicioMnr == $inicioMyr) && ($finMnr == $finMyr) ){
+                if (($inicioMnr == $inicioMyr) && ($finMnr == $finMyr)) {
                     $mensajePAAF = "Próximo programa";
                     $tituloPAAF = $resultadoPAAMnr->Titulo;
                     $imagenPAAF = $resultadoPAAMnr->Imagen;
@@ -227,15 +220,14 @@ class HomeController extends Controller
                     return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
                 }
 
-                if($finMnr > $horaActual){
+                if ($finMnr > $horaActual) {
                     $mensajePAAF = "Al aire ahora";
                     $tituloPAAF = $resultadoPAAMnr->Titulo;
                     $imagenPAAF = $resultadoPAAMnr->Imagen;
                     $inicioPAAF = $resultadoPAAMnr->inicio;
                     $finPAAF = $resultadoPAAMnr->fin;
                     return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
-                }
-                else{
+                } else {
                     $mensajePAAF = "Próximo programa";
                     $tituloPAAF = $resultadoPAAMyr->Titulo;
                     $imagenPAAF = $resultadoPAAMyr->Imagen;
@@ -249,18 +241,19 @@ class HomeController extends Controller
         return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
     }
 
-    function get_week_programation(){
+    function get_week_programation()
+    {
         $empresa_id = env('RADIO_ID');
         $diasDeProgramacionS = "SELECT * FROM dia ORDER BY orden ASC";
         $resultadoDDPs = DB::select($diasDeProgramacionS);
         $result = [];
-        foreach($resultadoDDPs AS $datosDDPs){
-            $programacionPorDia="SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen, PMA.contenido AS Contenido FROM programacion PON INNER JOIN programa PMA ON PON.programa_id = PMA.id WHERE PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " AND PON.dia_id = " . $datosDDPs->id . " ORDER BY concat(length(trim(PON.inicio_formato)), PON.inicio_formato) ASC";
+        foreach ($resultadoDDPs AS $datosDDPs) {
+            $programacionPorDia = "SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen, PMA.contenido AS Contenido FROM programacion PON INNER JOIN programa PMA ON PON.programa_id = PMA.id WHERE PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " AND PON.dia_id = " . $datosDDPs->id . " ORDER BY concat(length(trim(PON.inicio_formato)), PON.inicio_formato) ASC";
             $resultadoPPD = DB::select($programacionPorDia);
 
-            if($datosDDPs->id_php == date('N')){
+            if ($datosDDPs->id_php == date('N')) {
                 array_push($result, ['active', $datosDDPs->nombre, $datosDDPs->id_php, $resultadoPPD]);
-            }else{
+            } else {
                 array_push($result, ['inactive', $datosDDPs->nombre, $datosDDPs->id_php, $resultadoPPD]);
             }
         }
@@ -269,20 +262,29 @@ class HomeController extends Controller
 
     }
 
-    function convertirHoraMilitar($hora){
-        if(strpos($hora, "AM") !== false){
-            if(strpos($hora, "12") !== false){
+    function get_shows_for_today()
+    {
+        $empresa_id = env('RADIO_ID');
+        $day_info = DB::table('dia')->where('id_php', '=', date('N'))->first();
+
+        $query_for_get_todays_shows = "SELECT PON.*, PMA.titulo AS Titulo, PMA.imagen AS Imagen, PMA.contenido AS Contenido FROM programacion PON INNER JOIN programa PMA ON PON.programa_id = PMA.id WHERE PON.activo = 1 AND PON.empresa_id = " . $empresa_id . " AND PON.dia_id = " . $day_info->id . " ORDER BY concat(length(trim(PON.inicio_formato)), PON.inicio_formato) ASC";
+        $shows_for_today = DB::select($query_for_get_todays_shows);
+        return $shows_for_today;
+    }
+
+
+    function convertirHoraMilitar($hora)
+    {
+        if (strpos($hora, "AM") !== false) {
+            if (strpos($hora, "12") !== false) {
                 $hora = 0;
-            }
-            else{
+            } else {
                 $hora = trim(str_replace("PM", "", (str_replace("AM", "", (str_replace(":", "", trim($hora)))))));
             }
-        }
-        else{
-            if(strpos($hora, "12") !== false){
+        } else {
+            if (strpos($hora, "12") !== false) {
                 $hora = 1200;
-            }
-            else{
+            } else {
                 $hora = trim(str_replace("PM", "", (str_replace("AM", "", (str_replace(":", "", trim($hora)))))));
                 $hora += 1200;
             }

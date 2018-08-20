@@ -11,7 +11,7 @@
     @include('elements.mia-hdear', ['main_texts' => array('INICIO', 'FAMA')])
 
     <div class="main_content_container">
-    <!-- NEWS -->
+        <!-- NEWS -->
         <div class="section blog inverse-color pattern list-posts" id="anchor07">
             <div class="container">
                 <div class="row">
@@ -78,9 +78,9 @@
                 </div>
             </a>
         </section>
-        <!-- FEATURED ARTIST -->
-        <section class="section inverse-color featured-artists" id="anchor02">
-            <div class="container">
+        <!-- FEATURED RELASES -->
+        <section class="section featured-shop pattern">
+            <div class="container pattern">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="voffset70"></div>
@@ -88,46 +88,86 @@
                             <i class="fa fa-microphone"></i>
                         </div>
                         <div class="voffset30"></div>
-                        <p class="pretitle">Proximos estrenos</p>
+                        <p class="title">Cartelera</p>
+                        <div class="voffset80"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    @if(isset($movies) && !empty($movies))
+                        @foreach($movies as $movie)
+                            <div class="col-lg-3 col-md-4 col-xs-6">
+                                <div class="shop-item">
+                                    <div class="cover">
+                                        <img src="{{ env('URL_SOURCE_CINEMA') .  $movie['imagen'] }}" alt="">
+                                        <div class="rollover">
+                                            <p><a href="{{ route('cine_one', $movie['id']) }}" class="btn rounded icon"><i
+                                                            class="fa fa-plus"></i> Leer más</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <hr>
+                                        <p class="artist">{{ $movie['titulo'] }}</p>
+                                        <p>{{ \App\Article::limit_words(strip_tags($movie['sinopsis']), 25) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </section>
+        <!-- DISCOGRAPHY -->
+        <section class="section discography inverse-color" id="anchor04">
+            <div id="discography"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="voffset70"></div>
+                        <div class="separator-icon">
+                            <i class="fa fa-music"></i>
+                        </div>
+                        <div class="voffset30"></div>
+                        <p class="pretitle">Programacion de hoy</p>
                         <div class="voffset20"></div>
-                        <h2 class="title">Cartelera</h2>
+                        <h2 class="title">Proximos programaas</h2>
                         <div class="voffset80"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="voffset20"></div>
-                        <div class="js-flickity"
-                             data-flickity-options="{ &quot;cellAlign&quot;: &quot;left&quot;, &quot;wrapAround&quot;: true, &quot;contain&quot;: true, &quot;prevNextButtons&quot;: false }">
-                            @if(isset($movies) && !empty($movies))
-                                @foreach($movies as $movie)
-                                    <div class="gallery-cell col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                        <div class="featured-artist">
-                                            <div class="image">
-                                                <img src="{{ env('URL_SOURCE_CINEMA') .  $movie['imagen'] }}" alt="">
-                                            </div>
+                        <ul class="carousel-discography js-flickity"
+                            data-flickity-options='{ "cellAlign": "left", "wrapAround": true, "contain": true, "prevNextButtons": false }'>
+                            <!-- col-xlg-3 -->
+                            @foreach($todays_shows as $today_show)
+                                <li class="gallery-cell col-xs-12 col-sm-6 col-md-4">
+                                    <div class="info-album">
+                                        <div class="cover open-disc" data-url="discs/disc-01.html">
+                                            <img src="{{ env('URL_SOURCE_PROGRAM') . $today_show->Imagen }}" alt="">
                                             <div class="rollover">
-                                                <ul class="social">
-                                                    <li><a href="{{ $movie['url_youtube'] }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                                                </ul>
-                                                <div class="text">
-                                                    <p class="title-artist">{{ $movie['titulo'] }}</p>
-                                                    <p>{{ \App\Article::limit_words(strip_tags($movie['sinopsis']), 25) }}</p>
-                                                </div>
+                                                <i class="fa fa-plus"></i>
+                                                <p>Leer más</p>
                                             </div>
                                         </div>
+                                        <p class="album">{{ $today_show->inicio . ' - ' . $today_show->fin }}</p>
+                                        <p class="artist">{{ $today_show->Titulo }}</p>
                                     </div>
-                                @endforeach
-                            @endif
-                        </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="voffset90"></div>
                     </div>
                 </div>
-                <div class="voffset120"></div>
+            </div>
+            <!-- DETAILS DISCO -->
+            <div id="project-show"></div>
+            <div class="section player-album project-window">
+                <div class="project-content"></div><!-- AJAX Dinamic Content -->
             </div>
         </section>
+
         @include('elements.radio.live_radio_element')
     </div>
 @endsection
 
 @section('scripts')
-@endsection) }}
+@endsection
