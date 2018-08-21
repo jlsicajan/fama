@@ -66,17 +66,44 @@
         </div>
         <!-- TWITTER -->
         <section class="section twitterfeed inverse-color full-width parallax-section"
-                 data-parallax-image="/public/images/demo/twitter/bg-twitter.jpg">
-            <a href="https://twitter.com/fama1025?lang=es" target="_blank">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <i class="fa fa-twitter"></i>
-                            <div id="twitter-feed"></div>
+                 data-parallax-image="http://jellydemos.com/html/muziq/muziq-electronic/images/demo/twitter/bg-twitter.jpg"
+                 style="background-image: url('http://jellydemos.com/html/muziq/muziq-electronic/images/demo/twitter/bg-twitter.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-twitter"></i>
+                        <div id="twitter-feed">
+                            <ul class="slider-twitter flickity-enabled is-draggable" tabindex="0">
+                                <div class="user">
+                                    <a data-scribe="element:user_link"
+                                       href="https://twitter.com/fama1025"
+                                       aria-label="Nightcrawler Music (screen name: FAMA)"
+                                       target="_blank">
+                                        <img data-scribe="element:avatar"
+                                             data-src-2x="https://pbs.twimg.com/profile_images/707595080027250688/pOk10G2v_bigger.jpg"
+                                             alt=""
+                                             data-src-1x="https://pbs.twimg.com/profile_images/707595080027250688/pOk10G2v_normal.jpg"
+                                             src="https://pbs.twimg.com/profile_images/707595080027250688/pOk10G2v_bigger.jpg">
+                                    </a>
+
+
+                                    <div data-scribe="component:author">
+                                        <a data-scribe="element:user_link"
+                                           href="https://twitter.com/fama1025"
+                                           aria-label="Nightcrawler Music (screen name: FAMA)"
+                                           target="_blank">
+                                            <div>
+                                                <span style="text-align: center !important;" title="@fama1025s"
+                                                      data-scribe="element:screen_name">@fama1025</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </a>
+            </div>
         </section>
         <!-- FEATURED RELASES -->
         <section class="section featured-shop pattern">
@@ -164,7 +191,6 @@
                 <div class="project-content"></div><!-- AJAX Dinamic Content -->
             </div>
         </section>
-
         @include('elements.radio.live_radio_element')
     </div>
 @endsection
