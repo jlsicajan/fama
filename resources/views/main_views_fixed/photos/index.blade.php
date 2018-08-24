@@ -71,11 +71,4 @@
         </section>
     </div>
     @include('elements.radio.live_radio_element')
-    <style type="text/css">
-        .grid-photo-block {
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
 @endsection

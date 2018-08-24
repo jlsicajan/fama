@@ -62,7 +62,6 @@
             </div>
         </div>
     </div>
-    {{--@include('elements.staff.card_staff', ['image_url' => $staff_item['imagen'], 'card_title' => $staff_item['orden_mostrar'], 'card_text' => $staff_item['texto'], 'staff_id' => $staff_item['id'], 'staff_name' => $staff_item['locutor']])--}}
 </div>
 
 <script type="text/javascript">
@@ -70,3 +69,4 @@
     var users_blog = {!! json_encode($usuarios_blog) !!};
 </script>
 <script src="/public/js/main_views/staff/staff.js"></script>
+<script src="/public/js/nav_movements.js"></script>

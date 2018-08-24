@@ -18,7 +18,7 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 //        $photos = Photo::all()->toArray();
         $main_banner = Section::get_banner();
@@ -37,8 +37,9 @@ class PhotosController extends Controller
         }
 //        print_r($album);die();
 
-//        print_r($multimedia_photos);die();
-        return view('main_views_fixed.photos.index')->with(array('photos' => $multimedia_photos,
+        $view = $request->ajax() ? 'main_views_content_fixed.photos.index' : 'main_views_fixed.photos.index';
+
+        return view($view)->with(array('photos' => $multimedia_photos,
             'main_banner' => $main_banner, 'albums' => $album));
     }
 

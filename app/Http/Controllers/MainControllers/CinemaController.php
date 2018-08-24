@@ -15,14 +15,15 @@ class CinemaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $movies = Billboard::with('location')->get()->toArray();
 
         $main_banner = Section::get_banner();
+        $view = $request->ajax() ? 'main_views_content_fixed.cinema.index' : 'main_views_fixed.cinema.index';
 
-        // print_r($movies);die();
-        return view('main_views_fixed.cinema.index')->with(array('movies' => $movies,
+
+        return view($view)->with(array('movies' => $movies,
             'main_banner' => $main_banner));
     }
 

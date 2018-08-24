@@ -1,22 +1,55 @@
-@extends('layouts.app')
-
-@section('title', 'Rafio fama')
-@section('description', 'Radio fama 102.5 conoce al equipo')
-@section('og_image', env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo())
-
-@section('content')
-    <div class="main_content_container">
+<div class="main_content_container">
+    <!-- INTRO -->
+    <section class="intro intro-mini full-width jIntro bg-blog" id="anchor00">
         <div class="container">
-
-            @if(isset($movies[0]) && !empty($movies[0]))
-                @foreach($movies[0] as $movies_left)
-                    @include('elements.cinema.billboard', ['position' => 'left', 'movie' => $movies_left, 'gradient' => 1])
-                @endforeach
-            @endif
-
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <h1 class="primary-title">Cine</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    @include('elements.radio.live_radio_element')
-    <script src="/public/js/nav_movements.js"></script>
-@endsection
+    </section>
+    <!-- FEATURED RELASES -->
+    <section class="section featured-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="voffset70"></div>
+                    <div class="separator-icon">
+                        <i class="fa fa-microphone"></i>
+                    </div>
+                    <div class="voffset30"></div>
+                    <p class="pretitle">Cartelera</p>
+                    <div class="voffset80"></div>
+                </div>
+            </div>
+            <div class="row">
+                @if(isset($movies) && !empty($movies))
+                    @foreach($movies as $movie)
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="shop-item">
+                                <div class="cover">
+                                    <img src="{{ env('URL_SOURCE_CINEMA') .  $movie['imagen'] }}" alt="">
+                                    <div class="rollover">
+                                        <p><a href="{{ route('cine_one', $movie['id']) }}" class="btn rounded icon"><i
+                                                        class="fa fa-plus"></i> Leer más</a></p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <hr>
+                                    <p class="artist">{{ $movie['titulo'] }}</p>
+                                    <p>{{ \App\Article::limit_words(strip_tags($movie['sinopsis']), 25) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script src="/public/js/nav_movements.js"></script>
