@@ -1,4 +1,4 @@
-<div class="player horizontal">
+<div class="player horizontal player_fixed">
     <div class="container">
         <div class="info-album-player">
             <div class="album-cover" id="bg-image3"></div>
@@ -14,6 +14,15 @@
     </div>
 </div>
 
+<style type="text/css">
+    .player_fixed{
+        position: sticky;
+        margin: 0;
+        position: -webkit-sticky;
+        top: -1px;
+        bottom: 0;
+    }
+</style>
 <script type="text/javascript">
     // $(document).ready(function () {
     //     $('.play_button > .fa-pause').show();
