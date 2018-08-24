@@ -191,8 +191,8 @@
                 <div class="project-content"></div><!-- AJAX Dinamic Content -->
             </div>
         </section>
-        @include('elements.radio.live_radio_element')
     </div>
+    @include('elements.radio.live_radio_element')
 @endsection
 
 @section('scripts')

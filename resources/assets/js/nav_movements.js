@@ -32,12 +32,15 @@ function add_ajax_link_event() {
     });
 }
 
+
 function load_page_jl(page_to_load) {
     $('.ajax_link').removeClass('active');
     $(this).addClass('active');
 
     $('footer').hide();
-    $('.loading').removeClass('d-none').addClass('d-flex');
+    $('#mask').css('display', 'unset');
+    $('.loader').css('display', 'unset');
+
     // alert(load_page_ajax);
 
     clean_main_content_container(function () {
@@ -48,15 +51,17 @@ function load_page_jl(page_to_load) {
         $('.close-menu-sm').css('display', 'none');
 
         setTimeout(function () {
-            $('.loading').removeClass('d-flex').addClass('d-none');
+            $('#mask').css('display', 'none');
+            $('.loader').css('display', 'none');
+
             $(window).scrollTop(0);
-            if (typeof addthis !== 'undefined') {
-                addthis.toolbox('.addthis_toolbox');
-            }
-            FB.XFBML.parse();
+            // if (typeof addthis !== 'undefined') {
+            //     addthis.toolbox('.addthis_toolbox');
+            // }
+            // FB.XFBML.parse();
         }, 800);
 
     }, page_to_load);
 
-    $('.ajax_link_sm').removeClass('active');
+    // $('.ajax_link_sm').removeClass('active');
 }

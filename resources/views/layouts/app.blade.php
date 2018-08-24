@@ -81,32 +81,32 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
             <ul class="nav navbar-nav navbar-right nav-jls">
                 <li>
-                    <a href="{{ route('home') }}">
+                    <a data-href="{{ route('home') }}" class="ajax_link" href="#">
                         INICIO
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('pro') }}">
+                    <a data-href="{{ route('pro') }}" class="ajax_link" href="#">
                         PROGRAMACIÓN
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('staff') }}">
+                    <a data-href="{{ route('staff') }}" class="ajax_link" href="#">
                         STAFF
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('cinema') }}">
+                    <a data-href="{{ route('cinema') }}" class="ajax_link" href="#">
                         CINE
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('photos') }}">
+                    <a data-href="{{ route('photos') }}" class="ajax_link" href="#">
                         FOTOS
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('the20') }}">
+                    <a data-href="{{ route('the20') }}" class="ajax_link" href="#">
                         LOS 20+
                     </a>
                 </li>

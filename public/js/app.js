@@ -97,6 +97,7 @@ $(document).ready(function () {
 
 function clean_main_content_container(callback, page_to_load){
     $('.main_content_container').empty();
+    $('.jIntro').remove();
     $('.main_content_container').load(page_to_load);
     callback();
 }
