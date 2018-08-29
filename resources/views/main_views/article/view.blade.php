@@ -19,7 +19,7 @@
                                 <img class="featured-image" src="{{ $new['imagen'] }}">
                             @endif
                             <h4 class="title small"><span class="gray">Posted by:</span> {{ $new->fuente }} <span
-                                        class="right"><i class="fa fa-commenting-o"></i> 3 comments</span></h4>
+                                        class="right"><i class="fa fa-commenting-o"></i> </span></h4>
                             <h3 class="title post-detail">{{ $new->titulo }}</h3>
                             {!! $new->contenido !!}
 
@@ -71,18 +71,6 @@
 
                             <div class="voffset50"></div>
 
-                            <div class="title small">instagram feed</div>
-                            <div class="instagram-feed">
-                                <ul>
-                                    <li><img src="images/demo/blog/instagram1.jpg" alt=""></li>
-                                    <li><img src="images/demo/blog/instagram2.jpg" alt=""></li>
-                                    <li><img src="images/demo/blog/instagram3.jpg" alt=""></li>
-                                    <li><img src="images/demo/blog/instagram4.jpg" alt=""></li>
-                                    <li><img src="images/demo/blog/instagram5.jpg" alt=""></li>
-                                    <li><img src="images/demo/blog/instagram6.jpg" alt=""></li>
-                                </ul>
-                            </div>
-
                             <div class="title small">Noticias recientes</div>
                             <div class="last-posts-sidebar">
                                 <ul>
@@ -104,126 +92,6 @@
                                 </ul>
                             </div>
 
-                            <div class="title small">Tags</div>
-                            <div class="list-tags">
-                                <ul>
-                                    <li><a href="#">web design</a></li>
-                                    <li><a href="#">development</a></li>
-                                    <li><a href="#">css</a></li>
-                                    <li><a href="#">studio</a></li>
-                                    <li><a href="#">award</a></li>
-                                    <li><a href="#">mobile</a></li>
-                                    <li><a href="#">ios</a></li>
-                                    <li><a href="#">ui / ux</a></li>
-                                    <li><a href="#">portfolio</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="title small">Comments</div>
-                            <ul class="menu-sidebar">
-                                <li class="active">recent</li>
-                                <li>popular</li>
-                            </ul>
-                            <div class="last-comments">
-                                <ul>
-                                    <li>
-                                        <div class="header-comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="images/demo/blog/comments1.jpg" alt="">
-                                            </a>
-                                            <div class="title-post">
-                                                <div class="date">1 hour ago</div>
-                                                <p>Ethan Martin say:</p>
-                                            </div>
-                                        </div>
-                                        <div class="comment">
-                                            <p>“ Thanks so much for the awesome customer service. So many companies,
-                                                large and small, have a lot to learn from you. Great job! ”</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="header-comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="images/demo/blog/comments2.jpg" alt="">
-                                            </a>
-                                            <div class="title-post">
-                                                <div class="date">1 hour ago</div>
-                                                <p>Ethan Martin say:</p>
-                                            </div>
-                                        </div>
-                                        <div class="comment">
-                                            <p>“ Thanks so much for the awesome customer service. So many companies,
-                                                large and small, have a lot to learn from you. Great job! ”</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="header-comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="images/demo/blog/comments3.jpg" alt="">
-                                            </a>
-                                            <div class="title-post">
-                                                <div class="date">1 hour ago</div>
-                                                <p>Ethan Martin say:</p>
-                                            </div>
-                                        </div>
-                                        <div class="comment">
-                                            <p>“ Thanks so much for the awesome customer service. So many companies,
-                                                large and small, have a lot to learn from you. Great job! ”</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="title small"><i class="fa fa-twitter"></i> Twitter widget</div>
-                            <div class="last-tweets">
-                                <ul>
-                                    <li>
-                                        <div class="header-comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="images/demo/blog/tweet.jpg" alt="">
-                                            </a>
-                                            <div class="title-post">
-                                                <div class="date">‏@EnvatoMarket 1h</div>
-                                                <p>Envato Market</p>
-                                            </div>
-                                        </div>
-                                        <div class="tweet">
-                                            <p>“ Thanks so much for the awesome customer service. So many companies,
-                                                large and small, have a lot to learn from you. Great job! ”</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="header-comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="images/demo/blog/tweet.jpg" alt="">
-                                            </a>
-                                            <div class="title-post">
-                                                <div class="date">‏@EnvatoMarket 1h</div>
-                                                <p>Envato Market</p>
-                                            </div>
-                                        </div>
-                                        <div class="tweet">
-                                            <p>“ Thanks so much for the awesome customer service. So many companies,
-                                                large and small, have a lot to learn from you. Great job! ”</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="header-comment">
-                                            <a href="#" class="pull-left">
-                                                <img src="images/demo/blog/tweet.jpg" alt="">
-                                            </a>
-                                            <div class="title-post">
-                                                <div class="date">‏@EnvatoMarket 1h</div>
-                                                <p>Envato Market</p>
-                                            </div>
-                                        </div>
-                                        <div class="tweet">
-                                            <p>“ Thanks so much for the awesome customer service. So many companies,
-                                                large and small, have a lot to learn from you. Great job! ”</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

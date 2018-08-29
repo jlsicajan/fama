@@ -33,7 +33,7 @@
                 <div class="col-md-12">
                     <ul class="filters">
                         @foreach($albums as $album)
-                            <li data-filter=".{{ $album->id }}" class="is-checked wow fadeInUp"
+                            <li data-filter=".{{ $album->id }}" class="wow fadeInUp"
                                 data-wow-delay="0.5s">{{ $album->nombre }}</li>
                         @endforeach
                     </ul>
