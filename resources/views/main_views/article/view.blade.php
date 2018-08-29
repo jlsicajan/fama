@@ -38,16 +38,6 @@
                     <div class="col-md-3">
                         <div class="sidebar">
 
-                            <div class="title small">Buscar</div>
-                            <div class="input-group search">
-                                <input type="text" class="form-control" placeholder="Ingrese palabra clave">
-                                <span class="input-group-btn">
-                  <button type="button">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </span>
-                            </div>
-
                             <div class="title small">Redes sociales</div>
                             <ul class="social">
                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>

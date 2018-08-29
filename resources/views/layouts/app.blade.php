@@ -45,6 +45,8 @@
     <script src="/public/muziq/scripts/vendor/modernizr.js"></script>
     <script src="/public/muziq/scripts/vendor/jquery.js"></script>
     <script src="/public/muziq/scripts/vendor/bootstrap.js"></script>
+
+    <link rel="shortcut icon" href="{{ \App\Radio::get_logo() }}"/>
     @yield('head')
 </head>
 <body data-spy="scroll" data-target="#navbar-muziq" data-offset="80">
@@ -76,37 +78,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}"><img src="public/img/logo/fama_logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="logo"></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
             <ul class="nav navbar-nav navbar-right nav-jls">
                 <li>
-                    <a data-href="{{ route('home') }}" class="ajax_link" href="#">
+                    <a data-href="{{ route('home') }}" class="ajax_link" href="">
                         INICIO
                     </a>
                 </li>
                 <li>
-                    <a data-href="{{ route('pro') }}" class="ajax_link" href="#">
+                    <a data-href="{{ route('pro') }}" class="ajax_link" href="">
                         PROGRAMACIÓN
                     </a>
                 </li>
                 <li>
-                    <a data-href="{{ route('staff') }}" class="ajax_link" href="#">
+                    <a data-href="{{ route('staff') }}" class="ajax_link" href="">
                         STAFF
                     </a>
                 </li>
                 <li>
-                    <a data-href="{{ route('cinema') }}" class="ajax_link" href="#">
+                    <a data-href="{{ route('cinema') }}" class="ajax_link" href="">
                         CINE
                     </a>
                 </li>
                 <li>
-                    <a data-href="{{ route('photos') }}" class="ajax_link" href="#">
+                    <a data-href="{{ route('photos') }}" class="ajax_link" href="">
                         FOTOS
                     </a>
                 </li>
                 <li>
-                    <a data-href="{{ route('the20') }}" class="ajax_link" href="#">
+                    <a data-href="{{ route('the20') }}" class="ajax_link" href="">
                         LOS 20+
                     </a>
                 </li>
