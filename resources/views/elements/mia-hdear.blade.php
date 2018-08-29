@@ -1,7 +1,7 @@
 @if(isset($custom_background))
 @elseif(isset($main_banner))
     <!-- INTRO -->
-    <section class="intro full-width jIntro" id="anchor00">
+    <section class="intro full-width jIntro j_home_intro" id="anchor00">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

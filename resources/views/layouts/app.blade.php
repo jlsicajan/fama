@@ -20,7 +20,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="/public/muziq/vendor/bootstrap.css">
     <link rel="stylesheet" href="/public/muziq/vendor/font-awesome.min.css">
@@ -78,7 +79,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="logo"></a>
+            <a class="navbar-brand" href="{{ route('home') }}"><img
+                        src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="logo"></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
             <ul class="nav navbar-nav navbar-right nav-jls">
@@ -120,11 +122,11 @@
 @yield('content')
 @yield('scripts')
 <style type="text/css">
-    .time{
+    .time {
         display: none !important;
     }
 
-    .nav-jls li a{
+    .nav-jls li a {
         text-transform: uppercase !important;
     }
 </style>
@@ -160,6 +162,12 @@
 <script src="/public/js/app.js"></script>
 <script src="/public/js/nav_movements.js"></script>
 <script src="/public/js/main_views/content/pagination_manager.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.play-pause').trigger('click');
+        $('.play-pause').trigger('click');
+    });
+</script>
 @yield('after_body')
 </body>
 </html>

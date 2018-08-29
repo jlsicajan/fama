@@ -35,21 +35,7 @@
                         <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li class="google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li>
-                        <li class="tumblr"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                        <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
                     </ul>
-
-                    <div class="advertisment">
-                        <div class="vcenter">
-                            <p>advertisiment</p>
-                            <p>300 x 250</p>
-                        </div>
-                    </div>
 
                     <div class="voffset50"></div>
 
@@ -58,7 +44,7 @@
                         <ul>
                             @foreach($recent_news as $recent_new)
                                 <li>
-                                    <a href="{{ route('new_one', $recent_new['id']) }}" class="pull-left">
+                                    <a href="" data-href="{{ route('new_one', $recent_new['id']) }}" class="ajax_link pull-left">
                                         @if((substr($recent_new['imagen'], 0, 3) != 'htt') && (substr($recent_new['imagen'], 0, 2) != '//'))
                                             <img src="{{ env('URL_ARTICLE_PATH') . $recent_new['imagen'] }}images/demo/blog/recent-post1.jpg"
                                                  alt="{{ $recent_new['titulo'] }}">

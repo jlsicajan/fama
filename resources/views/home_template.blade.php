@@ -127,7 +127,7 @@
                                     <div class="cover">
                                         <img src="{{ env('URL_SOURCE_CINEMA') .  $movie['imagen'] }}" alt="">
                                         <div class="rollover">
-                                            <p><a href="{{ route('cine_one', $movie['id']) }}" class="btn rounded icon"><i
+                                            <p><a href="" data-href="{{ route('cine_one', $movie['id']) }}" class="btn rounded icon ajax_link"><i
                                                             class="fa fa-plus"></i> Leer más</a></p>
                                         </div>
                                     </div>

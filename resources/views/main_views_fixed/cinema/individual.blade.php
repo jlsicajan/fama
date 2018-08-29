@@ -36,13 +36,6 @@
                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li class="google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li>
-                                <li class="tumblr"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                                <li class="dribbble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li class="youtube"><a href="#"><i class="fa fa-youtube"></i></a></li>
                             </ul>
 
                             <div class="voffset50"></div>

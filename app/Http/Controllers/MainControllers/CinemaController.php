@@ -36,7 +36,7 @@ class CinemaController extends Controller
             print_r('New not found');
             die();
         } else {
-            $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views_fixed.cinema.individual';
+            $view = $request->ajax() ? 'main_views_content.cinema.individual' : 'main_views_fixed.cinema.individual';
 
             return view($view)->with(array('cine' => $cine));
         }
