@@ -35,8 +35,6 @@
                 </div>
             </div>
             <div class="vcenter text-center text-overlay">
-                <div class="logo-intro"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="">
-                </div>
                 <div id="owl-main-text" class="owl-carousel">
                     @foreach($main_banner as $index => $banner)
                         <div class="item">
@@ -73,8 +71,6 @@
             </div>
 
             <div class="vcenter text-center text-overlay">
-                <div class="logo-intro"><img src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="">
-                </div>
                 <div id="owl-main-text" class="owl-carousel">
                     <div class="item">
                         <h1 class="primary-title">Dope Beatmakers</h1>
