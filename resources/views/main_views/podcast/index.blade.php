@@ -46,6 +46,12 @@
                                                 <div class="separator tag"><span>{{ $plus['artista'] }}</span></div>
                                                 <p>{{ $plus['nombre'] }}</p>
                                                 <div class="title">{{ $plus['orden'] }}</div>
+                                                <div class="">
+                                                    <audio class="no_audiojs" id="{{ $plus['orden'] }}"><source src="{{ env('URL_SOURCE_MULTIMEDIA') . $plus['audio'] }}" type="audio/mp3">Your browser does not support the audio element.</audio>
+                                                    <button  data-is-playing="0" data-for-music='{{ $plus['orden'] }}' class="no_audiojs_button play_button color-white" type="button">
+                                                        <i class="fa fa-play color-white"></i><i class="fa fa-pause"></i>
+                                                    </button>
+                                                </div>
                                                 <div class="voffset70"></div>
                                             </div>
                                         </div>
