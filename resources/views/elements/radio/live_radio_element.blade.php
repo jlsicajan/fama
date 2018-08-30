@@ -1,9 +1,11 @@
 <div class="player horizontal player_fixed">
     <div class="container">
         <div class="info-album-player">
-            <div class="album-cover" id="bg-image3"></div>
-            <p class="album-title">FAMA EN VIVO</p>
-            <p class="artist-name">PROGRAMACION DE HOY</p>
+            <div class="album-cover" id="bg-image3" style="background-image: url({{ env('URL_SOURCE_PROGRAM') . $today_show->Imagen }})">
+
+            </div>
+            <p class="album-title">{{$current_show['PAFF_titulo']}}</p>
+            <p class="artist-name">{{$current_show['PAFF_message']}}</p>
         </div>
         <div class="player-content">
             <audio preload autoplay></audio>

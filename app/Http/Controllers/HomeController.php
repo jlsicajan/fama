@@ -65,10 +65,11 @@ class HomeController extends Controller
             $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
                 ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
 
+            $current_show = $this->get_current_show();
             $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
 
             return view($view)->with(array('article' => $article,
-                'main_banner' => $main_banner, 'articles_related' => $articles_related));
+                'main_banner' => $main_banner, 'articles_related' => $articles_related, 'current_show' => $current_show));
         }
     }
 
@@ -88,10 +89,11 @@ class HomeController extends Controller
 //            $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
 //                ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
 
+            $current_show = $this->get_current_show();
             $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
 
             return view($view)->with(array('new' => $article,
-                'main_banner' => $main_banner, 'recent_news' => $recent_news));
+                'main_banner' => $main_banner, 'recent_news' => $recent_news, 'current_show' => $current_show));
         }
     }
 

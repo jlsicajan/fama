@@ -230,6 +230,6 @@
             </div>
         </div>
     </div>
-    @include('elements.radio.live_radio_element')
+    @include('elements.radio.live_radio_element', ['current_show' => $current_show]);
     <script src="/public/js/nav_movements.js"></script>
 @endsection
