@@ -1,108 +1,13 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use App\Article;
-use App\Billboard;
-use App\Helpers\RadioUtil;
-use App\Http\Requests\Request;
-use App\Section;
-use App\Slide;
-use App\SocialNetwork;
-use App\News;
-use App\Category;
-
+namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 
-class HomeController extends Controller
+class RadioUtil
 {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller renders your application's "dashboard" for users that
-    | are authenticated. Of course, you are free to change or remove the
-    | controller as you wish. It is just here to get your app started!
-    |
-    */
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    // 	$this->middleware('auth');
-    public function index(\Illuminate\Http\Request $request)
-    {
-        //$next_shows = $this->get_next_shows();
-        $next_shows = RadioUtil::get_next_shows();
-        //$current_show = $this->get_current_show();
-        $current_show = RadioUtil::get_current_show();
-        $main_banner = Section::get_banner();
-        $movies = Billboard::with('location')->get()->toArray();
-        //$todays_shows = $this->get_shows_for_today();
-        $todays_shows = RadioUtil::get_shows_for_today();
-        //$week_programation = $this->get_week_programation();
-        $week_programation = RadioUtil::get_week_programation();
-        $news = News::where('activo', '=', 1)->orderBy('fecha', 'asc')->limit(5)->get()->toArray();
-
-        $view = $request->ajax() ? 'main_views_content.home' : 'home_template';
-
-
-        return view($view)->with(array('main_banner' => $main_banner, 'next_shows' => $next_shows, 'current_show' => $current_show,
-            'news' => $news, 'main_banner' => $main_banner, 'week_programation' => $week_programation, 'news' => $news, 'movies' => $movies, 'todays_shows' => $todays_shows));
-    }
-
-    public function article_one($article_id, \Illuminate\Http\Request $request)
-    {
-        $article = Article::findOrFail($article_id);
-        if (empty($article)) {
-            print_r('Article not found');
-            die();
-        } else {
-            $article->visitas = $article->visitas + 1;
-            $article->save();
-            $main_banner = Section::get_banner();
-            $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
-                ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
-
-            $current_show = $this->get_current_show();
-            $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
-
-            return view($view)->with(array('article' => $article,
-                'main_banner' => $main_banner, 'articles_related' => $articles_related, 'current_show' => $current_show));
-        }
-    }
-
-    public function new_one($new_id, \Illuminate\Http\Request $request)
-    {
-        //fix
-        $article = News::findOrFail($new_id);
-        if (empty($article)) {
-            print_r('New not found');
-            die();
-        } else {
-            $article->visita = $article->visita + 1;
-            $article->save();
-
-            $main_banner = Section::get_banner();
-            $recent_news = News::where('id', '!=', $article->id)->orderBy('fecha', 'DESC')->limit(4)->get();
-//            $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
-//                ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
-
-            $current_show = $this->get_current_show();
-            $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
-
-            return view($view)->with(array('new' => $article,
-                'main_banner' => $main_banner, 'recent_news' => $recent_news, 'current_show' => $current_show));
-        }
-    }
-
-    function get_next_shows()
+    public static function get_next_shows()
     {
         //Abraham's code adapted to laravel ORM, this have to be adapted correctly
         $diaActual = date("N");
@@ -157,7 +62,7 @@ class HomeController extends Controller
         return $proximosProgramas;
     }
 
-    function get_current_show()
+    public static function get_current_show()
     {
         //Abrahams files header adapted
         $empresa_id = env('RADIO_ID');
@@ -184,14 +89,14 @@ class HomeController extends Controller
         } else {
             if (isset($resultadoPAAMnr[0]) && !empty($resultadoPAAMnr[0])) {
                 $resultadoPAAMnr = $resultadoPAAMnr[0];
-                $inicioMnr = $this->convertirHoraMilitar($resultadoPAAMnr->inicio);
-                $finMnr = $this->convertirHoraMilitar($resultadoPAAMnr->fin);
+                $inicioMnr = self::convertirHoraMilitar($resultadoPAAMnr->inicio);
+                $finMnr = self::convertirHoraMilitar($resultadoPAAMnr->fin);
             }
 
             if (isset($resultadoPAAMyr[0]) && !empty($resultadoPAAMyr[0])) {
                 $resultadoPAAMyr = $resultadoPAAMyr[0];
-                $inicioMyr = $this->convertirHoraMilitar($resultadoPAAMyr->inicio);
-                $finMyr = $this->convertirHoraMilitar($resultadoPAAMyr->fin);
+                $inicioMyr = self::convertirHoraMilitar($resultadoPAAMyr->inicio);
+                $finMyr = self::convertirHoraMilitar($resultadoPAAMyr->fin);
             }
 
 
@@ -248,7 +153,7 @@ class HomeController extends Controller
         return array('PAFF_message' => $mensajePAAF, 'PAFF_titulo' => $tituloPAAF, 'PAFF_image' => $imagenPAAF, 'PAFF_start' => $inicioPAAF, 'PAFF_end' => $finPAAF);
     }
 
-    function get_week_programation()
+    public static function get_week_programation()
     {
         $empresa_id = env('RADIO_ID');
         $diasDeProgramacionS = "SELECT * FROM dia ORDER BY orden ASC";
@@ -269,7 +174,7 @@ class HomeController extends Controller
 
     }
 
-    function get_shows_for_today()
+    public static function get_shows_for_today()
     {
         $empresa_id = env('RADIO_ID');
         $day_info = DB::table('dia')->where('id_php', '=', date('N'))->first();
@@ -280,7 +185,7 @@ class HomeController extends Controller
     }
 
 
-    function convertirHoraMilitar($hora)
+    public static function convertirHoraMilitar($hora)
     {
         if (strpos($hora, "AM") !== false) {
             if (strpos($hora, "12") !== false) {
@@ -299,4 +204,6 @@ class HomeController extends Controller
 
         return $hora;
     }
+
+
 }
