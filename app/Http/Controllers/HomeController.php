@@ -90,9 +90,7 @@ class HomeController extends Controller
             $article->save();
 
             $main_banner = Section::get_banner();
-            $recent_news = News::where('id', '!=', $article->id)->orderBy('fecha', 'DESC')->limit(4)->get();
-//            $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
-//                ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
+            $recent_news = News::where('id', '!=', $article->id)->orderBy('fecha', 'ASC')->limit(4)->get();
 
             $current_show = RadioUtil::get_current_show();
             $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';

@@ -23,7 +23,8 @@ function isEmpty(str) {
 }
 
 function add_ajax_link_event() {
-    $('.ajax_link, .ajax_link_sm, .ajax_link_no_style').unbind('click').click(function () {
+    $('.ajax_link, .ajax_link_sm, .ajax_link_no_style').unbind('click').click(function (e) {
+        e.preventDefault();
         let load_page_ajax = get_path_ajax_to_load($(this));
         console.log('load: ' + load_page_ajax);
         if (!isEmpty(load_page_ajax)) {

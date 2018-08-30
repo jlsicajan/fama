@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\The20;
 use Illuminate\Http\Request;
 
 class VideosController extends Controller {
