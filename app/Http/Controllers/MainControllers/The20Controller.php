@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MainControllers;
 
 use App\Helpers\RadioUtil;
+use App\Podcast;
 use App\Section;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -26,9 +27,22 @@ class The20Controller extends Controller
         $view = $request->ajax() ? 'main_views_content_fixed.the20.index' : 'main_views_fixed.the20.index';
 
         return view($view)->with(array('the20' => $the_20,
-                'main_banner' => $main_banner, 'current_show' => $current_show));
+            'main_banner' => $main_banner, 'current_show' => $current_show));
     }
 
+
+    public function podcast(Request $request)
+    {
+        $the_20 = Podcast::orderby('orden', 'DESC')->get()->toArray();
+        $main_banner = Section::get_banner();
+
+        $current_show = RadioUtil::get_current_show();
+        $view = $request->ajax() ? 'main_views.podcast.index_ajax' : 'main_views.podcast.index';
+
+        return view($view)->with(array('the20' => $the_20,
+            'main_banner' => $main_banner, 'current_show' => $current_show));
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +57,7 @@ class The20Controller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,7 +68,7 @@ class The20Controller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -65,7 +79,7 @@ class The20Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -76,8 +90,8 @@ class The20Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -88,7 +102,7 @@ class The20Controller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -28,6 +28,7 @@ Route::get('/staff/', ['as'   => 'staff', 'uses' => 'MainControllers\StaffContro
 Route::get('/fotos/', ['as'   => 'photos', 'uses' => 'MainControllers\PhotosController@index']);
 
 Route::get('/los20/', ['as'   => 'the20', 'uses' => 'MainControllers\The20Controller@index']);
+Route::get('/podcast/', ['as'   => 'podcast', 'uses' => 'MainControllers\The20Controller@podcast']);
 
 Route::get('/alfombrarosa/', ['as'   => 'pink_carpet', 'uses' => 'MainControllers\PinkCarpetController@index']);
 
