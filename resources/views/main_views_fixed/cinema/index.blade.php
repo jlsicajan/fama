@@ -53,5 +53,5 @@
         </section>
 
     </div>
-    @include('elements.radio.live_radio_element')
+    @include('elements.radio.live_radio_element', ['current_show' => $current_show])
 @endsection

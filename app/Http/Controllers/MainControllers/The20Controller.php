@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MainControllers;
 
+use App\Helpers\RadioUtil;
 use App\Section;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -21,10 +22,11 @@ class The20Controller extends Controller
         $the_20 = The20::orderby('orden', 'DESC')->get()->toArray();
         $main_banner = Section::get_banner();
 
+        $current_show = RadioUtil::get_current_show();
         $view = $request->ajax() ? 'main_views_content_fixed.the20.index' : 'main_views_fixed.the20.index';
 
         return view($view)->with(array('the20' => $the_20,
-                'main_banner' => $main_banner));
+                'main_banner' => $main_banner, 'current_show' => $current_show));
     }
 
 

@@ -2,6 +2,7 @@
 
 use App\Article;
 use App\Category;
+use App\Helpers\RadioUtil;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -31,18 +32,18 @@ class ContentController extends Controller {
             print_r('Category or subcategory not found');die();
         }else{
             $content = Article::get_content_info($category, $subcategory);
-            
+            $current_show = RadioUtil::get_current_show();
             if(!empty($content['redirect'])){
                 $view_data = $this->where_to_redirect($content, $request);
                 
-                return view($view_data['view'])->with($view_data['data'])->with(array('main_background' => $content['main_background']));
+                return view($view_data['view'])->with($view_data['data'])->with(array('main_background' => $content['main_background'] , 'current_show' => $current_show));
             }else{
                 if($content['is_video']){
                     $view = $request->ajax() ? 'main_views_content.content.view_video' : 'main_views.content.view_video';
                 }else{
                     $view = $request->ajax() ? 'main_views_content.content.view' : 'main_views.content.view';
                 }
-                return view($view)->with(array('content' => $content, 'main_background' => $content['main_background']));
+                return view($view)->with(array('content' => $content, 'main_background' => $content['main_background'], 'current_show' => $current_show));
             }
         }
     }

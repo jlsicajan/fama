@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\MainControllers;
 
 use App\Article;
+use App\Helpers\RadioUtil;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -20,10 +21,11 @@ class PinkCarpetController extends Controller {
         $main_banner = Section::get_banner();
         $articles_gthoy = Article::where('autor', '=', 'Gthoy')->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->get()->toArray();
 
+        $current_show = RadioUtil::get_current_show();
         if ($request->ajax()) {
-            return view('main_views_content_fixed.pink_carpet.index')->with(array('main_banner' => $main_banner, 'articles_gthoy' => $articles_gthoy));
+            return view('main_views_content_fixed.pink_carpet.index')->with(array('main_banner' => $main_banner, 'articles_gthoy' => $articles_gthoy, 'current_show' => $current_show));
         }else{
-            return view('main_views_fixed.pink_carpet.index')->with(array('main_banner' => $main_banner, 'articles_gthoy' => $articles_gthoy));
+            return view('main_views_fixed.pink_carpet.index')->with(array('main_banner' => $main_banner, 'articles_gthoy' => $articles_gthoy, 'current_show' => $current_show));
         }
 	}
 

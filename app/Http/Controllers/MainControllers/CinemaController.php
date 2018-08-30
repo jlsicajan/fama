@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MainControllers;
 
+use App\Helpers\RadioUtil;
 use App\Section;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -22,10 +23,10 @@ class CinemaController extends Controller
         $main_banner = Section::get_banner();
         $view = $request->ajax() ? 'main_views_content_fixed.cinema.index' : 'main_views_fixed.cinema.index';
 
-
+        $current_show = RadioUtil::get_current_show();
 
         return view($view)->with(array('movies' => $movies,
-            'main_banner' => $main_banner));
+            'main_banner' => $main_banner, 'current_show' => $current_show));
     }
 
 
@@ -38,8 +39,8 @@ class CinemaController extends Controller
             die();
         } else {
             $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views_fixed.cinema.individual';
-
-            return view($view)->with(array('cine' => $cine));
+            $current_show = RadioUtil::get_current_show();
+            return view($view)->with(array('cine' => $cine, 'current_show' => $current_show));
         }
     }
 

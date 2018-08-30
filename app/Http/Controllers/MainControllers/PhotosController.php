@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MainControllers;
 
 use App\Album;
+use App\Helpers\RadioUtil;
 use App\Multimedia;
 use App\Photo;
 use App\PhotoAlbum;
@@ -23,7 +24,7 @@ class PhotosController extends Controller
 //        $photos = Photo::all()->toArray();
         $main_banner = Section::get_banner();
         $album = Album::all();
-
+        $current_show = RadioUtil::get_current_show();
         $multimedia_photos = array();
 
         foreach ($album as $al) {
@@ -40,7 +41,7 @@ class PhotosController extends Controller
         $view = $request->ajax() ? 'main_views_content_fixed.photos.index' : 'main_views_fixed.photos.index';
 
         return view($view)->with(array('photos' => $multimedia_photos,
-            'main_banner' => $main_banner, 'albums' => $album));
+            'main_banner' => $main_banner, 'albums' => $album, 'current_show' => $current_show));
     }
 
     /**

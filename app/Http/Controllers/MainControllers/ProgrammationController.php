@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\MainControllers;
 
+use App\Helpers\RadioUtil;
 use App\News;
 use App\Section;
 use App\Slide;
@@ -19,8 +20,8 @@ class ProgrammationController extends Controller
      */
     public function index(Request $request)
     {
-        $next_shows = $this->get_next_shows();
-        $current_show = $this->get_current_show();
+        $next_shows = RadioUtil::get_next_shows();
+        $current_show = RadioUtil::get_current_show();
         $week_programation = $this->get_week_programation();
         $news = News::where('activo', '=', 1)->get()->toArray();
 

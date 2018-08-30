@@ -94,7 +94,7 @@ class HomeController extends Controller
 //            $articles_related = Article::where('categoria_id', '=', $article->categoria_id)->where('id', '!=', $article->id)
 //                ->select('id', 'titulo', 'imagen', 'autor', 'fecha', 'texto_uno')->orderBy('fecha', 'DESC')->limit(3)->get()->toArray();
 
-            $current_show = $this->get_current_show();
+            $current_show = RadioUtil::get_current_show();
             $view = $request->ajax() ? 'main_views_content.article.view' : 'main_views.article.view';
 
             return view($view)->with(array('new' => $article,

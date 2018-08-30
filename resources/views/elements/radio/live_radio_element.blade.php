@@ -1,7 +1,7 @@
 <div class="player horizontal player_fixed">
     <div class="container">
         <div class="info-album-player">
-            <div class="album-cover" id="bg-image3" style="background-image: url({{ env('URL_SOURCE_PROGRAM') . $today_show->Imagen }})">
+            <div class="album-cover" id="bg-image3" style="background-image: url({{ env('URL_SOURCE_PROGRAM') . $current_show['PAFF_image'] }})">
 
             </div>
             <p class="album-title">{{$current_show['PAFF_titulo']}}</p>
