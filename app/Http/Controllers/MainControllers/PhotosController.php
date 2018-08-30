@@ -38,7 +38,7 @@ class PhotosController extends Controller
         }
 //        print_r($album);die();
 
-        $view = $request->ajax() ? 'main_views_content_fixed.photos.index' : 'main_views_fixed.photos.index';
+        $view = $request->ajax() ? 'main_views_fixed.photos.index_ajax' : 'main_views_fixed.photos.index';
 
         return view($view)->with(array('photos' => $multimedia_photos,
             'main_banner' => $main_banner, 'albums' => $album, 'current_show' => $current_show));
