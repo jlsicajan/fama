@@ -111,6 +111,10 @@
     .nav-jls li a {
         text-transform: uppercase !important;
     }
+
+    .w-100{
+        width: 100% !important;
+    }
 </style>
 <footer>
     <div class="container">
@@ -130,7 +134,7 @@
 
 <script src="/public/muziq/scripts/vendor/jquery.superslides.min.js"></script>
 <script src="/public/muziq/scripts/vendor/flickity.pkgd.js"></script>
-<script src="/public/muziq/scripts/vendor/audio.min.js"></script>
+<script src="/public/muziq/scripts/vendor/audio.js"></script>
 <script src="/public/muziq/scripts/vendor/twitterFetcher_min.js"></script>
 <script src="/public/muziq/scripts/vendor/isotope.pkgd.min.js"></script>
 <script src="/public/muziq/scripts/vendor/jquery.swipebox.min.js"></script>
@@ -146,7 +150,7 @@
 <script src="/public/js/main_views/content/pagination_manager.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        // $('.play-pause').trigger('click');
+        $('.play-pause').trigger('click');
         // $('.play-pause').trigger('click');
         (function() {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -157,6 +161,16 @@
         })();
     });
 </script>
+<style type="text/css">
+    .no_audiojs_button{
+        color: white;
+        border: none;
+        width: 64px;
+        height: 64px;
+        background: #f30000;
+        border-radius: 50%;
+    }
+</style>
 @yield('after_body')
 </body>
 </html>

@@ -63,25 +63,25 @@ $(document).ajaxComplete(function(event, request, settings) {
         });
         
         // Load in the first track
-        var audio0 = a0[0];
-            first = $('ol.playlist0 a').attr('data-src');
-        $('ol.playlist0 li').first().addClass('pause');
-        audio0.load(first);
-
-        // Load in a track on click
-        $('ol.playlist0 li').click(function(e) {
-            e.preventDefault();
-
-            if( $(this).attr('class') == 'playing' ) {
-                $(this).addClass('pause');
-                audio0.playPause();
-            } else {
-                $(this).removeClass('pause').addClass('playing').siblings().removeClass('playing').removeClass('pause');
-                audio0.load($('a', this).attr('data-src'));
-                audio0.play();
-            } 
-
-        });
+        // var audio0 = a0[0];
+        //     first = $('ol.playlist0 a').attr('data-src');
+        // $('ol.playlist0 li').first().addClass('pause');
+        // audio0.load(first);
+        //
+        // // Load in a track on click
+        // $('ol.playlist0 li').click(function(e) {
+        //     e.preventDefault();
+        //
+        //     if( $(this).attr('class') == 'playing' ) {
+        //         $(this).addClass('pause');
+        //         audio0.playPause();
+        //     } else {
+        //         $(this).removeClass('pause').addClass('playing').siblings().removeClass('playing').removeClass('pause');
+        //         audio0.load($('a', this).attr('data-src'));
+        //         audio0.play();
+        //     }
+        //
+        // });
 
         // $('.pause').click(function(e) {
         //     e.preventDefault();

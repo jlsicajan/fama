@@ -30,28 +30,6 @@
                         <h2 class="title">ESCUCHALOS</h2>
                         <div class="voffset80"></div>
                     </div>
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="player horizontal">
-                            <div class="container">
-                                <div class="player-content">
-                                    <audio preload></audio>
-                                    <ol class="playlist">
-                                        @foreach($the20 as $plus)
-                                            @if(!empty($plus['audio']) && !empty($plus['imagen']))
-                                                <li><a href="#" data-src="{{ env('URL_SOURCE_MULTIMEDIA') . $plus['audio'] }}">{{ $plus['artista'] }} - {{ $plus['nombre'] }}</a></li>
-                                            @endif
-                                        @endforeach
-                                    </ol>
-                                    <div class="nextprev">
-                                        <span class="prev">prev</span>
-                                        <span class="next">next</span>
-                                    </div>
-                                    <span class="btnloop">loop</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="voffset80"></div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">

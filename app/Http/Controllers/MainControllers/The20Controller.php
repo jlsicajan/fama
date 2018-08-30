@@ -24,7 +24,7 @@ class The20Controller extends Controller
         $main_banner = Section::get_banner();
 
         $current_show = RadioUtil::get_current_show();
-        $view = $request->ajax() ? 'main_views_content_fixed.the20.index' : 'main_views_fixed.the20.index';
+        $view = $request->ajax() ? 'main_views_fixed.the20.index_ajax' : 'main_views_fixed.the20.index';
 
         return view($view)->with(array('the20' => $the_20,
             'main_banner' => $main_banner, 'current_show' => $current_show));

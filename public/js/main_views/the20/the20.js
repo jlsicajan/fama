@@ -6,14 +6,18 @@ var music_selected = 0;
 var button_selected;
 
 $('.play_button').unbind('click').click(function(){
+    if($('.audiojs').hasClass('playing')){
+        $('.play-pause').trigger('click');
+    }
+
     console.log("clicked");
     let id_one = $(this).attr('data-for-music');
     music_selected = document.getElementById(id_one);
     button_selected = $(this);
 
-    $('audio').each(function(){
+    $('.no_audiojs').each(function(){
         let id_other = $(this).attr('id');
-
+        console.log(id_other);
         if(id_other != id_one){
             $(this).next().attr('data-is-playing', 0);
             let music_one = document.getElementById(id_other);
