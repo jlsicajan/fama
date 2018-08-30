@@ -19,6 +19,9 @@
           rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
+    <link rel="icon"
+          type="image/png"
+          href="https://www.zamzar.com/images/filetypes/ico.png">
     <link href="/public/css/app.css" rel="stylesheet">
     <script src="/public/js/modernizr.js"></script>
 </head>

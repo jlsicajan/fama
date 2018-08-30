@@ -79,7 +79,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}"><img
+            <a class="navbar-brand ajax_link" data-href="{{ route('home') }}" href=""><img class="main_logo"
                         src="{{ env('URL_RADIO_INFO_PATH') . \App\Radio::get_logo() }}" alt="logo"></a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-muziq">
@@ -146,8 +146,15 @@
 <script src="/public/js/main_views/content/pagination_manager.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.play-pause').trigger('click');
-        $('.play-pause').trigger('click');
+        // $('.play-pause').trigger('click');
+        // $('.play-pause').trigger('click');
+        (function() {
+            var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.href = 'https://s3-us-west-2.amazonaws.com/miacaminoweb/fama_icon.png';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        })();
     });
 </script>
 @yield('after_body')
