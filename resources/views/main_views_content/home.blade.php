@@ -25,7 +25,6 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     @if((substr($new['imagen'], 0, 3) != 'htt') && (substr($new['imagen'], 0, 2) != '//'))
-
                                         <div class="photo-post" id="{{ $new['id'] }}"
                                              style="background-image: url({{ env('URL_ARTICLE_PATH') . $new['imagen'] }});"></div>
                                     @else
