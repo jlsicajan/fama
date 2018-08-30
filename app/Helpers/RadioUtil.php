@@ -81,7 +81,7 @@ class RadioUtil
 
         if (empty($resultadoPAAMyr) && empty($resultadoPAAMnr)) {
             $mensajePAAF = "Próximo programa";
-            $tituloPAAF = "No hay programa";
+            $tituloPAAF = "No ingresado";
             $imagenPAAF = "";
             $inicioPAAF = "00:00";
             $finPAAF = "00:00";
